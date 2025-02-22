@@ -27,7 +27,7 @@ static const CanMember Manager{MANAGER_ID, "Manager"};
 static const CanMember Kessel{KESSEL_ID, "Kessel"};
 static const CanMember HK1{HK1_ID, "HK1"};
 static const CanMember HK2{HK2_ID, "HK2"};
-static const CanMember FET{0x402, "FET"};    // TODO: make configurable and double check
+static const CanMember FET{0x680, "FET"};    // TODO: make configurable and double check
 static const CanMember MFG{0x700, "MFG"};    // TODO: make configurable and double check
 static const CanMember WPM2{0x480, "WPM2"};  // TODO: make configurable and double check
 
@@ -36,9 +36,9 @@ static const std::vector<std::reference_wrapper<const CanMember>> canMembers{Kes
 
 using Request = std::pair<const CanMember, const Property>;
 struct ConditionalRequest {
-    ConditionalRequest(Request request) : _request(request){};
+    ConditionalRequest(Request request) : _request(request) {};
     ConditionalRequest(Request request, std::function<bool()> condition)
-        : _request(request), _condition(std::move(condition)){};
+        : _request(request), _condition(std::move(condition)) {};
 
     Request _request;
     std::function<bool()> _condition = []() {
