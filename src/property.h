@@ -283,10 +283,10 @@ struct Property : public detail::Property {
     PROPERTY(MISCHERDYNAMIK, 0x4ea9);
     PROPERTY(SOLLTEMP_HK2, 0x4eb0, Type::et_dec_val);
     PROPERTY(ISTTEMPERATUR, 0x4eb4, Type::et_dec_val);
-    PROPERTY(KOMFORTTEMPERATUR, 0x4eb8, Type::et_dec_val);
-    PROPERTY(ECOTEMPERATUR, 0x4eb9, Type::et_dec_val);
+    PROPERTY(KOMFORTTEMPERATUR, 0x0005, Type::et_dec_val);
+    PROPERTY(ECOTEMPERATUR, 0x0008, Type::et_dec_val);
     PROPERTY(RAUMISTTEMP, 0x4ec7, Type::et_dec_val);
-    PROPERTY(RAUMSOLLTEMP, 0x0005, Type::et_dec_val);
+    PROPERTY(RAUMSOLLTEMP, 0x0006, Type::et_dec_val);
     PROPERTY(RAUMFEUCHTE, 0x0075, Type::et_dec_val);
     PROPERTY(TAUPUNKTTEMP, 0x4ee0, Type::et_dec_val);
     PROPERTY(RAUMEINFLUSS, 0x4f33);
@@ -308,7 +308,7 @@ struct Property : public detail::Property {
     PROPERTY(VERDICHTER_STARTS, 0x4ef1);
     PROPERTY(VERDICHTER_STARTS_K, 0x4ef0);
     PROPERTY(HYSTERESE_VORLAUFTEMP_KUEHLEN, 0x4f00, Type::et_dec_val);
-    PROPERTY(PROGRAMMSCHALTER, 0x4f1b, Type::et_betriebsart);
+    PROPERTY(PROGRAMMSCHALTER, 0x0112, Type::et_betriebsart);
     PROPERTY(VORLAUFISTTEMP_WP, 0xfdf5, Type::et_dec_val);
     PROPERTY(RUECKLAUFISTTEMP_WP, 0x0016, Type::et_dec_val);
     PROPERTY(LEISTUNG_KUEHLEN, 0x7a40, Type::et_dec_val);
