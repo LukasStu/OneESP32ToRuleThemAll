@@ -145,16 +145,18 @@ std::pair<Property, SimpleVariant> processCanMessage(const std::vector<std::uint
 
     const auto value{static_cast<std::uint16_t>((byte1 << 8U) | byte2)};
     const auto canId{static_cast<std::uint16_t>(((msg[0U] & 0xfc) << 3) | (msg[1U] & 0x3f))};
+    // Identify message type and log accordingly
     if (isRequest(msg)) {
-        ESP_LOGD("Communication", "Message is a request. Dropping it!");
-        ESP_LOGD("Communication",
-                 "Message received: Read/Write ID 0x%02x 0x%02x(0x%03x) for property %s (0x%04x) with raw value: %d",
-                 msg[0U], msg[1U], canId, std::string(property.name).c_str(), property.id, value);
+        ESP_LOGD("Communication", "[REQUEST ] Ignored request from CAN ID 0x%03X, property %s (0x%04X).", canId,
+                 std::string(property.name).c_str(), property.id);
         return {Property::kINDEX_NOT_FOUND, value};
+    } else if (isResponse(msg)) {
+        ESP_LOGI("Communication", "[RESPONSE] Received response from CAN ID 0x%03X, property %s (0x%04X), value: %d.",
+                 canId, std::string(property.name).c_str(), property.id, value);
+    } else {
+        ESP_LOGI("Communication", "[WRITE   ] Received write from CAN ID 0x%03X, property %s (0x%04X), value: %d.",
+                 canId, std::string(property.name).c_str(), property.id, value);
     }
-    ESP_LOGI("Communication",
-             "Message received: Read/Write ID 0x%02x 0x%02x(0x%03x) for property %s (0x%04x) with raw value: %d",
-             msg[0U], msg[1U], canId, std::string(property.name).c_str(), property.id, value);
     return {property, GetValueByType(value, property.type)};
 }
 
