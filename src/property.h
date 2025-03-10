@@ -285,7 +285,7 @@ struct Property : public detail::Property {
     PROPERTY(ISTTEMPERATUR, 0x4eb4, Type::et_dec_val);
     PROPERTY(KOMFORTTEMPERATUR, 0x0005, Type::et_dec_val);
     PROPERTY(ECOTEMPERATUR, 0x0008, Type::et_dec_val);
-    PROPERTY(RAUMISTTEMP, 0x4ec7, Type::et_dec_val);
+    PROPERTY(RAUMISTTEMP, 0x0011, Type::et_dec_val);
     PROPERTY(RAUMSOLLTEMP, 0x0006, Type::et_dec_val);
     PROPERTY(RAUMFEUCHTE, 0x0075, Type::et_dec_val);
     PROPERTY(TAUPUNKTTEMP, 0x4ee0, Type::et_dec_val);
