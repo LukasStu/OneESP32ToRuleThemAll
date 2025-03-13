@@ -132,7 +132,7 @@ select:
         - lambda: |-
             const auto betriebsartId = Mapper::instance().getBetriebsartId(x);
             if(betriebsartId.has_value()) {
-              sendData(WPM2, Property::kPROGRAMMSCHALTER, (betriebsartId.value() >> 8U) & 0xFF);
+              sendData(WPM2, Property::kPROGRAMMSCHALTER, (betriebsartId.value()));
             }
 
 #########################################
