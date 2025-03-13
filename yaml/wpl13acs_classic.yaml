@@ -168,7 +168,7 @@ packages:
   VORLAUFTEMP_QUELLE:         !include { file: wp_temperature.yaml, vars: { property: "VORLAUFTEMP_QUELLE" , target: "Manager"  }}
   # RUECKLAUFTEMP_QUELLE:       !include { file: wp_temperature.yaml, vars: { property: "RUECKLAUFTEMP_QUELLE" , target: "Manager"  }}
   VORLAUFISTTEMP:             !include { file: wp_temperature.yaml, vars: { property: "VORLAUFISTTEMP"     , update_interval: $interval_medium, target: "MFG"  }}
-  VORLAUFISTTEMP_WP:            !include { file: wp_temperature.yaml, vars: { property: "VORLAUFISTTEMP_WP"    , target: "HK1"  }}
+  VORLAUFISTTEMP_WP:          !include { file: wp_temperature.yaml, vars: { property: "VORLAUFISTTEMP_WP"  , update_interval: $interval_medium, target: "MFG"  }}
   VERDAMPFERTEMP:             !include { file: wp_temperature.yaml, vars: { property: "VERDAMPFERTEMP"     , target: "Manager"  }}
   RUECKLAUFISTTEMP:           !include { file: wp_temperature.yaml, vars: { property: "RUECKLAUFISTTEMP"   , update_interval: $interval_medium , target: "MFG" }}
 
