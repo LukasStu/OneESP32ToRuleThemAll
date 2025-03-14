@@ -32,6 +32,15 @@ esphome:
           });
           queueRequest(WPM2, Property::kPROGRAMMSCHALTER);
 
+          // Register a callback for the comfort temperature property.
+          CallbackHandler::instance().addCallback(std::make_pair(HK1, Property::kKOMFORTTEMPERATUR), [](const SimpleVariant& value) {
+            const auto temperature = value.get<float>();
+            ESP_LOGI("KOMFORTTEMPERATUR", "Received temperature: %f", temperature);
+              id(KOMFORTTEMPERATUR).publish_state(temperature);
+          });
+          // Request the current comfort temperature from the device.
+          queueRequest(HK1, Property::kKOMFORTTEMPERATUR);
+
 substitutions:
   kessel_can_id: "0x180"
   hk1_can_id: "0x301"
@@ -134,6 +143,26 @@ select:
             if(betriebsartId.has_value()) {
               sendData(WPM2, Property::kPROGRAMMSCHALTER, (betriebsartId.value()));
             }
+#########################################
+#                                       #
+#   Sliders                             #
+#                                       #
+#########################################
+number:
+  - platform: template
+    name: "KOMFORTTEMPERATUR"
+    id: KOMFORTTEMPERATUR
+    min_value: 16.0
+    max_value: 30.0
+    step: 0.5
+    optimistic: true
+    initial_value: 22.0  # fallback value; will be updated on boot
+    set_action:
+      then:
+        - lambda: |-
+            // Send the new comfort temperature to the device.
+            sendData(HK1, Property::kKOMFORTTEMPERATUR, static_cast<std::uint16_t>(x * 10.0f));
+
 
 #########################################
 #                                       #
