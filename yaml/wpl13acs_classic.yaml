@@ -196,6 +196,7 @@ packages:
 
   ECOTEMPERATUR:             !include { file: wp_number.yaml, vars:  { property: "ECOTEMPERATUR", icon: "mdi:sun-thermometer", min: "15.0", max: "30.0", step: "0.1", unit: "°C", mode: "box" , target: "HK1"}}
   KOMFORTTEMPERAT:           !include { file: wp_number.yaml, vars:  { property: "KOMFORTTEMPERATUR", icon: "mdi:sun-thermometer", min: "15.0", max: "30.0", step: "0.1", unit: "°C", mode: "box" , target: "HK1"}}
+  EINSTELL_SPEICHERSOLLTEMP: !include { file: wp_number.yaml, vars:  { property: "EINSTELL_SPEICHERSOLLTEMP", icon: "mdi:sun-thermometer", min: "15.0", max: "80.0", step: "0.1", unit: "°C", mode: "box" , target: "HK1"}}
 
 
 #########################################
