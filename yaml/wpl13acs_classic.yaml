@@ -199,10 +199,10 @@ packages:
   KOMFORTTEMPERATUR_WW:      !include { file: wp_number.yaml, vars:  { property: "KOMFORTTEMPERATUR_WW", icon: "mdi:sun-thermometer", min: "15.0", max: "80.0", step: "0.1", unit: "°C", mode: "box" , target: "Manager"}}
   ECOTEMPERATUR_WW:          !include { file: wp_number.yaml, vars:  { property: "ECOTEMPERATUR_WW", icon: "mdi:sun-thermometer", min: "15.0", max: "80.0", step: "0.1", unit: "°C", mode: "box" , target: "Manager"}}
 
-  T_01:                      !include { file: wp_temperature.yaml, vars: { property: "T_01" , update_interval: $interval_medium, target: "Kessel"  }}
+  T_01:                      !include { file: wp_temperature.yaml, vars: { property: "T_01" , update_interval: $interval_medium, target: "Manager"  }}
   T_02:                      !include { file: wp_temperature.yaml, vars: { property: "T_02" , update_interval: $interval_medium, target: "Kessel"  }}
   T_03:                      !include { file: wp_temperature.yaml, vars: { property: "T_03" , update_interval: $interval_medium, target: "Kessel"  }}
-  T_04:                      !include { file: wp_temperature.yaml, vars: { property: "T_04" , update_interval: $interval_medium, target: "Kessel"  }}
+  T_04:                      !include { file: wp_temperature.yaml, vars: { property: "T_04" , update_interval: $interval_medium, target: "Manager"  }}
 
 
 #########################################
