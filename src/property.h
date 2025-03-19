@@ -265,7 +265,7 @@ struct Property : public detail::Property {
     PROPERTY(KOMFORTTEMPERATUR_WW, 0x0013, Type::et_dec_val);
     PROPERTY(ECOTEMPERATUR_WW, 0x0A06, Type::et_dec_val);
     PROPERTY(T_01, 0x0A36, Type::et_dec_val);
-    PROPERTY(T_02, 0x02CA, Type::et_dec_val);
+    PROPERTY(T_02, 0xfdf4, Type::et_dec_val);
     PROPERTY(T_03, 0x01D7, Type::et_dec_val);
     PROPERTY(T_04, 0xFE09, Type::et_dec_val);
     PROPERTY(PUFFERISTTEMPERATUR, 0x0078, Type::et_dec_val);
@@ -317,7 +317,7 @@ struct Property : public detail::Property {
     PROPERTY(VORLAUFISTTEMP_NHZ, 0xfdf5, Type::et_dec_val);
     PROPERTY(RUECKLAUFISTTEMP_WP, 0x0016, Type::et_dec_val);
     PROPERTY(LEISTUNG_KUEHLEN, 0x7a40, Type::et_dec_val);
-    PROPERTY(RUECKLAUFISTTEMP, 0xfdf4, Type::et_dec_val);
+    PROPERTY(RUECKLAUFISTTEMP, 0x02CA, Type::et_dec_val);
 
     PROPERTY(VD_ABTAUEN, 0x0808, Type::et_zeit);
 #endif
