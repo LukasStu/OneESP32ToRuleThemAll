@@ -143,5 +143,13 @@ struct Property : public detail::Property {
     PROPERTY(LEISTUNG_KUEHLEN, 0x7a40, Type::et_dec_val);
     PROPERTY(RUECKLAUFISTTEMP, 0x02CA, Type::et_dec_val);
     PROPERTY(VD_ABTAUEN, 0x0808, Type::et_zeit);
+
+    PROPERTY(HEIZPROG_1_MO_SO, 0x14a0, Type::et_time_domain);
+    PROPERTY(BIVALENZTEMPERATUR_HZG, 0x01ac, Type::et_dec_val);
+    PROPERTY(BIVALENZTEMPERATUR_WW, 0x01ad, Type::et_dec_val);
+
+    PROPERTY(LZ_VERD_1_HEIZBETRIEB, 0x07fc, Type::et_cent_val);
+    PROPERTY(LZ_VERD_1_KUEHLBETRIEB, 0x07ff, Type::et_cent_val);
+    PROPERTY(LZ_VERD_1_WW_BETRIEB, 0x0802, Type::et_cent_val);
 };
 #endif
