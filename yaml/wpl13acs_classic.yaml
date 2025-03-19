@@ -23,7 +23,7 @@ esphome:
     priority: -100
     then:
       - lambda: |-
-          CallbackHandler::instance().addCallback(std::make_pair(WPM2,Property::kPROGRAMMSCHALTER),[](const SimpleVariant& value){
+          CallbackHandler::instance().addCallback(std::make_pair(WPM,Property::kPROGRAMMSCHALTER),[](const SimpleVariant& value){
             const auto stringValue{value.get<std::string>()};
             ESP_LOGI("PROGRAMMSCHALTER", "mapped value %s", stringValue.c_str());
             const auto index = id(PROGRAMMSCHALTER).index_of(stringValue);
@@ -31,7 +31,7 @@ esphome:
               id(PROGRAMMSCHALTER).publish_state(stringValue);
             }
           });
-          queueRequest(WPM2, Property::kPROGRAMMSCHALTER);
+          queueRequest(WPM, Property::kPROGRAMMSCHALTER);
 
 substitutions:
   espclient_can_id: "0x6a2"
@@ -135,7 +135,7 @@ select:
         - lambda: |-
             const auto betriebsartId = Mapper::instance().getBetriebsartId(x);
             if(betriebsartId.has_value()) {
-              sendData(WPM2, Property::kPROGRAMMSCHALTER, (betriebsartId.value()));
+              sendData(WPM, Property::kPROGRAMMSCHALTER, (betriebsartId.value()));
             }
 
 #########################################
@@ -176,15 +176,15 @@ packages:
   RUECKLAUFISTTEMP:           !include { file: wp_temperature.yaml, vars: { property: "RUECKLAUFISTTEMP"   , update_interval: $interval_medium , target: "Kessel" }}
 
   RAUMFEUCHTE:                !include { file: wp_generic.yaml,     vars: { property: "RAUMFEUCHTE" , interval: $interval_medium, unit: "%", icon: "mdi:water-percent", accuracy_decimals: "1", target: "HK1"  }}
-  # HEIZEN_EFFIZIENZ_TAG:       !include { file: wp_generic.yaml,     vars: { property: "HEIZEN_EFFIZIENZ_TAG"  , target: "WPM2", accuracy_decimals: "2" }}
-  # HEIZEN_EFFIZIENZ_JAHR:      !include { file: wp_generic.yaml,     vars: { property: "HEIZEN_EFFIZIENZ_JAHR" , target: "WPM2", accuracy_decimals: "2" }}
+  # HEIZEN_EFFIZIENZ_TAG:       !include { file: wp_generic.yaml,     vars: { property: "HEIZEN_EFFIZIENZ_TAG"  , target: "WPM", accuracy_decimals: "2" }}
+  # HEIZEN_EFFIZIENZ_JAHR:      !include { file: wp_generic.yaml,     vars: { property: "HEIZEN_EFFIZIENZ_JAHR" , target: "WPM", accuracy_decimals: "2" }}
   # QUELLENDRUCK:               !include { file: wp_generic.yaml,     vars: { property: "QUELLENDRUCK"          , interval: never, unit: "bar"  , icon: "mdi:water-pressure" , accuracy_decimals: "1", target: "Manager"  }}
   # LEISTUNG_QUELLENPUMPE:      !include { file: wp_generic.yaml,     vars: { property: "LEISTUNG_QUELLENPUMPE" , interval: never, unit: "%"    , icon: "mdi:water-percent", accuracy_decimals: "1", target: "Manager"  }}
   # VOLUMENSTROM:               !include { file: wp_generic.yaml,     vars: { property: "VOLUMENSTROM"          , interval: never, unit: "l/min", icon: "mdi:flow"           , accuracy_decimals: "1", target: "Manager"  }}
   STROM_INVERTER:             !include { file: wp_generic.yaml,     vars: { property: "STROM_INVERTER"        , interval: never, unit: "A"    , target: "Manager"          , accuracy_decimals: "1"  }}
   SPANNUNG_INVERTER:          !include { file: wp_generic.yaml,     vars: { property: "SPANNUNG_INVERTER"     , interval: never, unit: "V"    , target: "Manager"          , accuracy_decimals: "1"  }}
 
-  # RAUMEINFLUSS:               !include { file: wp_number.yaml, vars: { property: "RAUMEINFLUSS", target: "WPM2" }}
+  # RAUMEINFLUSS:               !include { file: wp_number.yaml, vars: { property: "RAUMEINFLUSS", target: "WPM" }}
 
   # VERDICHTER_STARTS:            !include { file: wp_generic_combined.yaml, vars: { sensor_name: "VERDICHTER_STARTS"           , scaled_property: "VERDICHTER_STARTS_K"       , property: "VERDICHTER_STARTS"         , unit: ""   , accuracy_decimals: "0", scaler: "1000", icon: "mdi:counter" , target: "Manager" }}
   WAERMEERTRAG_WW_SUMME_MWH:    !include { file: wp_generic_combined.yaml, vars: { sensor_name: "WAERMEERTRAG_WW_SUMME_MWH"   , scaled_property: "WAERMEERTRAG_WW_SUM_KWH"   , property: "WAERMEERTRAG_WW_SUM_MWH"   , unit: "MWh", accuracy_decimals: "3", icon: "mdi:fire" , target: "Manager"  }}
