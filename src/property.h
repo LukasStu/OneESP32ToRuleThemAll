@@ -309,7 +309,7 @@ struct Property : public detail::Property {
     PROPERTY(VERDICHTER_STARTS_K, 0x4ef0);
     PROPERTY(HYSTERESE_VORLAUFTEMP_KUEHLEN, 0x4f00, Type::et_dec_val);
     PROPERTY(PROGRAMMSCHALTER, 0x0112, Type::et_betriebsart);
-    PROPERTY(VORLAUFISTTEMP_WP, 0xfdf5, Type::et_dec_val);
+    PROPERTY(VORLAUFISTTEMP_NHZ, 0xfdf5, Type::et_dec_val);
     PROPERTY(RUECKLAUFISTTEMP_WP, 0x0016, Type::et_dec_val);
     PROPERTY(LEISTUNG_KUEHLEN, 0x7a40, Type::et_dec_val);
     PROPERTY(RUECKLAUFISTTEMP, 0xfdf4, Type::et_dec_val);
