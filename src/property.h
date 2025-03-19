@@ -262,7 +262,12 @@ struct Property : public detail::Property {
 #endif
 
 #if defined(WPL_13_ACS_CLASSIC)
-    PROPERTY(EINSTELL_SPEICHERSOLLTEMP, 0x0013, Type::et_dec_val);
+    PROPERTY(KOMFORTTEMPERATUR_WW, 0x0013, Type::et_dec_val);
+    PROPERTY(ECOTEMPERATUR_WW, 0x0A06, Type::et_dec_val);
+    PROPERTY(T_01, 0x0A36, Type::et_dec_val);
+    PROPERTY(T_02, 0x02CA, Type::et_dec_val);
+    PROPERTY(T_03, 0x01D7, Type::et_dec_val);
+    PROPERTY(T_04, 0xFE09, Type::et_dec_val);
     PROPERTY(PUFFERISTTEMPERATUR, 0x0078, Type::et_dec_val);
     PROPERTY(SOLLTEMP_HK1, 0x0199, Type::et_dec_val);
     PROPERTY(VORLAUFTEMP, 0x01d6, Type::et_dec_val);
