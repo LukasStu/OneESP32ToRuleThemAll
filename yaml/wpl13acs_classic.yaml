@@ -16,7 +16,6 @@ esphome:
       - "-DMANAGER_ID=$manager_can_id"
       - "-DKESSEL_ID=$kessel_can_id"
       - "-DHK1_ID=$hk1_can_id"
-      - "-DHK2_ID=$hk2_can_id"
   on_boot:
     priority: -100
     then:
@@ -34,7 +33,6 @@ esphome:
 substitutions:
   kessel_can_id: "0x180"
   hk1_can_id: "0x301"
-  hk2_can_id: "0x602"
   manager_can_id: "0x480"
   espclient_can_id: "0x6a2"
 

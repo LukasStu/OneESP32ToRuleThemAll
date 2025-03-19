@@ -111,7 +111,6 @@ struct Property : public detail::Property {
     PROPERTY(MINTEMP, 0x4ea4, Type::et_dec_val);
     PROPERTY(MAXTEMP, 0x4ea8, Type::et_dec_val);
     PROPERTY(MISCHERDYNAMIK, 0x4ea9);
-    PROPERTY(SOLLTEMP_HK2, 0x4eb0, Type::et_dec_val);
     PROPERTY(ISTTEMPERATUR, 0x4eb4, Type::et_dec_val);
     PROPERTY(KOMFORTTEMPERATUR, 0x0005, Type::et_dec_val);
     PROPERTY(ECOTEMPERATUR, 0x0008, Type::et_dec_val);
