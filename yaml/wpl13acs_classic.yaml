@@ -16,6 +16,9 @@ esphome:
       - "-DMANAGER_ID=$manager_can_id"
       - "-DKESSEL_ID=$kessel_can_id"
       - "-DHK1_ID=$hk1_can_id"
+      - "-DFET_ID=$fet_can_id"
+      - "-DMFG_ID=$mfg_can_id"
+      - "-DWPM_ID=$wpm_can_id"
   on_boot:
     priority: -100
     then:
@@ -31,10 +34,13 @@ esphome:
           queueRequest(WPM2, Property::kPROGRAMMSCHALTER);
 
 substitutions:
+  espclient_can_id: "0x6a2"
+  manager_can_id: "0x480"
   kessel_can_id: "0x180"
   hk1_can_id: "0x301"
-  manager_can_id: "0x480"
-  espclient_can_id: "0x6a2"
+  fet_can_id: "0x601"
+  mfg_can_id: "0x700"
+  wpm_can_id: "0x480"
 
 #########################################
 #                                       #
