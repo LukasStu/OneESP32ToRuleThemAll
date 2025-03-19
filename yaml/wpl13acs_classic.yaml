@@ -12,7 +12,6 @@ esphome:
     - OneESP32ToRuleThemAll/src/util.h
   platformio_options:
     build_flags:
-      - "-DWPL_13_ACS_CLASSIC"
       - "-DESPCLIENT_ID=$espclient_can_id"
       - "-DMANAGER_ID=$manager_can_id"
       - "-DKESSEL_ID=$kessel_can_id"
