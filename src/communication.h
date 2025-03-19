@@ -27,7 +27,7 @@ static const CanMember Manager{MANAGER_ID, "Manager"};
 static const CanMember Kessel{KESSEL_ID, "Kessel"};
 static const CanMember HK1{HK1_ID, "HK1"};
 static const CanMember FET{FET_ID, "FET"};
-static const CanMember MFG{MFG_ID, "MFG"};
+static const CanMember MFG{MUFG_ID, "MFG"};
 static const CanMember WPM2{WPM_ID, "WPM2"};
 
 static const std::vector<std::reference_wrapper<const CanMember>> canMembers{Kessel, HK1, Manager, ESPClient,

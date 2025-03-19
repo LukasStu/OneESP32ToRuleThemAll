@@ -17,7 +17,7 @@ esphome:
       - "-DKESSEL_ID=$kessel_can_id"
       - "-DHK1_ID=$hk1_can_id"
       - "-DFET_ID=$fet_can_id"
-      - "-DMFG_ID=$mfg_can_id"
+      - "-DMUFG_ID=$mfg_can_id"
       - "-DWPM_ID=$wpm_can_id"
   on_boot:
     priority: -100
