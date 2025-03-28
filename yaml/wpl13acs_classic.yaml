@@ -164,7 +164,7 @@ packages:
   # ISTTEMPERATUR_HK1:          !include { file: wp_temperature.yaml, vars: { property: "ISTTEMPERATUR"     , name_suffix: "_HK1" , target: "HK1"  }}
   # KOMFORTTEMPERATUR_HK1:      !include { file: wp_temperature.yaml, vars: { property: "KOMFORTTEMPERATUR" , name_suffix: "_HK1" , target: "HK1"  }}
   # ECOTEMPERATUR_HK1:          !include { file: wp_temperature.yaml, vars: { property: "ECOTEMPERATUR"     , name_suffix: "_HK1" , target: "HK1"  }}
-  RAUMISTTEMP:                !include { file: wp_temperature.yaml, vars: { property: "RAUMISTTEMP" , interval: $interval_medium , target: "Manager"  }}
+  RAUMISTTEMP:                !include { file: wp_temperature.yaml, vars: { property: "RAUMISTTEMP" , interval: $interval_medium , target: "FET"  }}
   # RAUMSOLLTEMP:               !include { file: wp_temperature.yaml, vars: { property: "RAUMSOLLTEMP"      , target: "FET"  }}
   PUFFERISTTEMPERATUR:        !include { file: wp_temperature.yaml, vars: { property: "PUFFERISTTEMPERATUR" }}
   # FROSTSCHUTZ:                !include { file: wp_temperature.yaml, vars: { property: "FROSTSCHUTZ"       , target: "MFG"  }}
