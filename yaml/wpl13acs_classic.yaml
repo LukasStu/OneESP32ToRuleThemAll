@@ -207,6 +207,9 @@ packages:
   T_03:                      !include { file: wp_temperature.yaml, vars: { property: "T_03" , update_interval: $interval_medium, target: "Kessel"  }}
   T_04:                      !include { file: wp_temperature.yaml, vars: { property: "T_04" , update_interval: $interval_medium, target: "MFG"  }}
 
+  LZ_VERD_1_HEIZBETRIEB:               !include { file: wp_generic.yaml,     vars: { property: "LZ_VERD_1_HEIZBETRIEB"          , interval: never, unit: "bar"  , icon: "mdi:water-pressure" , accuracy_decimals: "1", target: "Manager"  }}
+  LZ_VERD_1_KUEHLBETRIEB:              !include { file: wp_generic.yaml,     vars: { property: "LZ_VERD_1_KUEHLBETRIEB"          , interval: never, unit: "bar"  , icon: "mdi:water-pressure" , accuracy_decimals: "1", target: "Manager"  }}
+  LZ_VERD_1_WW_BETRIEB:                !include { file: wp_generic.yaml,     vars: { property: "LZ_VERD_1_WW_BETRIEB"          , interval: never, unit: "bar"  , icon: "mdi:water-pressure" , accuracy_decimals: "1", target: "Manager"  }}
 
 #########################################
 #                                       #
