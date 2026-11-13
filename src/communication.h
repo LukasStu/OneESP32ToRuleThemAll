@@ -155,9 +155,10 @@ std::pair<Property, SimpleVariant> processCanMessage(const std::vector<std::uint
                  static_cast<unsigned>(frameId), static_cast<unsigned>(payloadId), std::string(property.name).c_str(),
                  static_cast<unsigned>(property.id), static_cast<unsigned>(value));
     } else {
-        ESP_LOGI("Communication", "[OTHER   ] frame_id=0x%03X, payload_id=0x%03X, property %s (0x%04X), value: %u.",
+        ESP_LOGI("Communication", "[OTHER   ] frame_id=0x%03X, payload_id=0x%03X, property %s (0x%04X), value: %u, header=%02X %02X.",
                  static_cast<unsigned>(frameId), static_cast<unsigned>(payloadId), std::string(property.name).c_str(),
-                 static_cast<unsigned>(property.id), static_cast<unsigned>(value));
+                 static_cast<unsigned>(property.id), static_cast<unsigned>(value), static_cast<unsigned>(msg[0U]),
+                 static_cast<unsigned>(msg[1U]));
     }
     return {property, GetValueByType(value, property.type)};
 }
