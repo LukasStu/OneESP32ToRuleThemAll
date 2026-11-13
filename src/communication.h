@@ -122,7 +122,7 @@ void scheduleRequest(const CanMember& member, const Property& property, std::chr
  *        be converted to the correct type automatically, based the type that was defined for this
  *        entity in \c property.h
  */
-std::pair<Property, SimpleVariant> processCanMessage(const std::vector<std::uint8_t>& msg) {
+std::pair<Property, SimpleVariant> processCanMessage(const std::vector<std::uint8_t>& msg, std::uint32_t frameId) {
     Property property{Property::kINDEX_NOT_FOUND};
     std::uint8_t byte1{0U};
     std::uint8_t byte2{0U};
@@ -143,18 +143,21 @@ std::pair<Property, SimpleVariant> processCanMessage(const std::vector<std::uint
     }
 
     const auto value{static_cast<std::uint16_t>((byte1 << 8U) | byte2)};
-    const auto canId{static_cast<std::uint16_t>(((msg[0U] & 0xfc) << 3) | (msg[1U] & 0x3f))};
+    const auto payloadId{static_cast<std::uint16_t>(((msg[0U] & 0xfc) << 3) | (msg[1U] & 0x3f))};
     // Identify message type and log accordingly
     if (isRequest(msg)) {
-        ESP_LOGD("Communication", "[REQUEST ] Ignored request from CAN ID 0x%03X, property %s (0x%04X).", canId,
-                 std::string(property.name).c_str(), property.id);
+        ESP_LOGD("Communication", "[REQUEST ] frame_id=0x%03X, payload_id=0x%03X, property %s (0x%04X).",
+                 static_cast<unsigned>(frameId), static_cast<unsigned>(payloadId), std::string(property.name).c_str(),
+                 static_cast<unsigned>(property.id));
         return {Property::kINDEX_NOT_FOUND, value};
     } else if (isResponse(msg)) {
-        ESP_LOGI("Communication", "[RESPONSE] Received response from CAN ID 0x%03X, property %s (0x%04X), value: %d.",
-                 canId, std::string(property.name).c_str(), property.id, value);
+        ESP_LOGI("Communication", "[RESPONSE] frame_id=0x%03X, payload_id=0x%03X, property %s (0x%04X), value: %u.",
+                 static_cast<unsigned>(frameId), static_cast<unsigned>(payloadId), std::string(property.name).c_str(),
+                 static_cast<unsigned>(property.id), static_cast<unsigned>(value));
     } else {
-        ESP_LOGI("Communication", "[WRITE   ] Received write from CAN ID 0x%03X, property %s (0x%04X), value: %d.",
-                 canId, std::string(property.name).c_str(), property.id, value);
+        ESP_LOGI("Communication", "[OTHER   ] frame_id=0x%03X, payload_id=0x%03X, property %s (0x%04X), value: %u.",
+                 static_cast<unsigned>(frameId), static_cast<unsigned>(payloadId), std::string(property.name).c_str(),
+                 static_cast<unsigned>(property.id), static_cast<unsigned>(value));
     }
     return {property, GetValueByType(value, property.type)};
 }

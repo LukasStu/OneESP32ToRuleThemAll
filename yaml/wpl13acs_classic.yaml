@@ -231,7 +231,7 @@ canbus:
       then:
         - lambda: |-
             ESP_LOGD("CAN", "Can message received with CANId 0x%04lx", can_id);
-            const auto [property, value] = processCanMessage(x);
+            const auto [property, value] = processCanMessage(x, can_id);
             const auto canMember = getCanMemberByCanId(can_id);
             if(canMember) {
               auto callback = CallbackHandler::instance().getCallback(std::make_pair(canMember->get(),property));
