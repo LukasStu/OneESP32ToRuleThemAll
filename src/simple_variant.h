@@ -5,7 +5,6 @@
 #include <string>
 #include <tuple>
 #include <type_traits>
-#include <typeinfo>
 
 template <typename T>
 struct is_string
@@ -51,18 +50,22 @@ struct normalized<T, std::enable_if_t<is_string_v<T>>> {
 template <typename T>
 using normalized_t = typename normalized<T>::type;
 
+// A distinct address identifies each original type without RTTI.
+template <typename T>
+inline char simple_variant_type_id;
+
 struct SimpleVariant {
-    SimpleVariant() : type_id(typeid(void)){};
+    SimpleVariant() : type_id(&simple_variant_type_id<void>){};
 
     template <typename T>
-    SimpleVariant(const T& value) : type_id(typeid(T)) {
+    SimpleVariant(const T& value) : type_id(&simple_variant_type_id<std::remove_cv_t<T>>) {
         auto& t_element = std::get<normalized_t<T>>(t);
         t_element = value;
     }
 
     template <typename T>
     bool holds_alternative() const {
-        return (typeid(T) == type_id);
+        return &simple_variant_type_id<std::remove_cv_t<std::remove_reference_t<T>>> == type_id;
     }
 
     template <typename T>
@@ -77,7 +80,7 @@ struct SimpleVariant {
 
    private:
     std::tuple<bool, float, std::string> t;
-    const std::type_info& type_id;
+    const void* type_id;
 };
 
 #endif
