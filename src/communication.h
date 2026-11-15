@@ -25,13 +25,14 @@ struct CanMember {
 static const CanMember ESPClient{ESPCLIENT_ID, "ESPClient"};
 static const CanMember Manager{MANAGER_ID, "Manager"};
 static const CanMember Kessel{KESSEL_ID, "Kessel"};
+static const CanMember Heizmodul{0x500, "Heizmodul"};
 static const CanMember HK1{HK1_ID, "HK1"};
 static const CanMember FET{FET_ID, "FET"};
 static const CanMember MFG{MUFG_ID, "MFG"};
 static const CanMember WPM{WPM_ID, "WPM"};
 
-static const std::vector<std::reference_wrapper<const CanMember>> canMembers{Kessel, HK1, Manager, ESPClient,
-                                                                             FET,    MFG, WPM};
+static const std::vector<std::reference_wrapper<const CanMember>> canMembers{Kessel, Heizmodul, HK1, Manager,
+                                                                             ESPClient, FET, MFG, WPM};
 
 using Request = std::pair<const CanMember, const Property>;
 struct ConditionalRequest {
