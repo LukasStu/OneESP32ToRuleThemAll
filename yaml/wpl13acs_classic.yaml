@@ -110,6 +110,10 @@ interval:
                 conditionalRequests.erase(it);
             }
           }
+  - interval: 50ms
+    then:
+      - lambda: |-
+          processNextTransmission();
 
 #########################################
 #                                       #
@@ -135,7 +139,7 @@ select:
         - lambda: |-
             const auto betriebsartId = Mapper::instance().getBetriebsartId(x);
             if(betriebsartId.has_value()) {
-              sendData(WPM, Property::kPROGRAMMSCHALTER, (betriebsartId.value()));
+              queueTransmission(WPM, Property::kPROGRAMMSCHALTER, (betriebsartId.value()));
             }
 
 #########################################

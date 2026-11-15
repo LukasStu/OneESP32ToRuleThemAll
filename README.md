@@ -22,6 +22,9 @@ This project aims to provide all kinds of useful features for your Home Assistan
 7. change pins for SPI/CAN if needed
 8. provide HA entities for temperature and humidity
 
+CAN write commands are queued and processed one at a time every 50 ms, independently of the read-request queue.
+After each write is sent, the corresponding value is requested again after 10 seconds.
+
 ## Add new readings from heat pump / adopt to your device
 
 1. Navigate through the menu of the display, mounted to your heat pump

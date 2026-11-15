@@ -104,7 +104,7 @@ select:
         - lambda: |-
             const auto passivkuehlungId = Mapper::instance().getPassivkuehlungId(x);
             if(passivkuehlungId.has_value()) {
-              sendData(Kessel, Property::kPASSIVKUEHLUNG, passivkuehlungId.value());
+              queueTransmission(Kessel, Property::kPASSIVKUEHLUNG, passivkuehlungId.value());
             }
 
   - platform: template
@@ -127,7 +127,7 @@ select:
         - lambda: |-
             const auto betriebsartId = Mapper::instance().getBetriebsartId(x);
             if(betriebsartId.has_value()) {
-              sendData(Kessel, Property::kPROGRAMMSCHALTER, betriebsartId.value());
+              queueTransmission(Kessel, Property::kPROGRAMMSCHALTER, betriebsartId.value());
             }
 
 #########################################
@@ -142,10 +142,10 @@ switch:
     optimistic: true
     turn_on_action:
       - lambda: |-
-          sendData(HK1, Property::kKUEHLMODE, static_cast<std::uint16_t>(true));
+          queueTransmission(HK1, Property::kKUEHLMODE, static_cast<std::uint16_t>(true));
     turn_off_action:
       - lambda: |-
-          sendData(HK1, Property::kKUEHLMODE, static_cast<std::uint16_t>(false));
+          queueTransmission(HK1, Property::kKUEHLMODE, static_cast<std::uint16_t>(false));
 
 #########################################
 #                                       #

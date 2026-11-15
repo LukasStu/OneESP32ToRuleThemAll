@@ -93,6 +93,10 @@ interval:
                 conditionalRequests.erase(it);
             }
           }
+  - interval: 50ms
+    then:
+      - lambda: |-
+          processNextTransmission();
   - interval: $interval_medium
     then:
       - lambda: |-
@@ -100,13 +104,13 @@ interval:
           const auto room_temp = id(gRAUMISTTEMP);
           if(room_temp > 0.0f) {
             ESP_LOGI("SET", "Sending cached room temperature %f to heatpump", room_temp);
-            sendData(HK1, Property::kRAUMISTTEMP, static_cast<std::uint16_t>(room_temp * 10.0f));
+            queueTransmission(HK1, Property::kRAUMISTTEMP, static_cast<std::uint16_t>(room_temp * 10.0f));
           }
           // Send current RAUMFEUCHTE
           const auto humidity = id(gRAUMFEUCHTE);
           if(humidity > 0.0) {
             ESP_LOGI("SET", "Sending cached humidity %f to heatpump", humidity);
-            sendData(HK1, Property::kRAUMFEUCHTE, static_cast<std::uint16_t>(humidity * 10.0f));
+            queueTransmission(HK1, Property::kRAUMFEUCHTE, static_cast<std::uint16_t>(humidity * 10.0f));
           }
 
 #########################################

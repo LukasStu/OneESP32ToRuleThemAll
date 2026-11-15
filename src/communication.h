@@ -48,6 +48,13 @@ struct ConditionalRequest {
 
 static std::list<ConditionalRequest> conditionalRequests;
 
+struct Transmission {
+    Request request;
+    std::uint16_t value;
+};
+
+static std::list<Transmission> transmissions;
+
 /**
  * @brief Tries to find the CANMember with the given CANId.
  *
@@ -124,6 +131,12 @@ void scheduleRequest(const CanMember& member, const Property& property, std::chr
     conditionalRequests.emplace_back(
         std::make_pair(member, property),
         [t = std::chrono::steady_clock::now() + seconds]() { return t < std::chrono::steady_clock::now(); });
+}
+
+void queueTransmission(const CanMember& member, const Property& property, const std::uint16_t value) {
+    ESP_LOGI("QUEUE", "Queued %u for %s to %s", static_cast<unsigned>(value),
+             std::string(property.name).c_str(), member.name.c_str());
+    transmissions.push_back({std::make_pair(member, property), value});
 }
 
 /**
@@ -206,6 +219,16 @@ void sendData(const CanMember& member, const Property property, const std::uint1
     id(wp_can).send_data(ESPClient.canId, use_extended_id, data);
     // Request the value again to make sure the sensor is updated, with a delay of 10s to allow the heatpump to react.
     scheduleRequest(member, property, std::chrono::seconds(10));
+}
+
+void processNextTransmission() {
+    if (!transmissions.empty()) {
+        const auto& transmission = transmissions.front();
+        ESP_LOGI("QUEUE", "Sending %u for %s to %s", static_cast<unsigned>(transmission.value),
+                 std::string(transmission.request.second.name).c_str(), transmission.request.first.name.c_str());
+        sendData(transmission.request.first, transmission.request.second, transmission.value);
+        transmissions.pop_front();
+    }
 }
 
 #endif

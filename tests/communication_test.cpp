@@ -41,4 +41,34 @@ int main() {
     const std::vector<std::uint8_t> responseWithBothBits{0xc3, 0x01, 0x11, 0x00, 0xe6, 0x00, 0x00};
     assert(isResponse(responseWithBothBits));
     assert(!isRequest(responseWithBothBits));
+
+    processNextTransmission();
+    assert(test_canbus.sent_data.empty());
+    queueTransmission(WPM, Property::kPROGRAMMSCHALTER, 0x1234);
+    queueTransmission(Kessel, Property::kMINUTE, 0x5678);
+    assert(test_canbus.sent_data.empty());
+    assert(conditionalRequests.empty());
+
+    processNextTransmission();
+    assert(test_canbus.sent_data.size() == 1);
+    assert(test_canbus.sent_data[0] == (std::vector<std::uint8_t>{
+        static_cast<std::uint8_t>(WPM.getWriteId() >> 8U), static_cast<std::uint8_t>(WPM.getWriteId()),
+        0xfa, static_cast<std::uint8_t>(Property::kPROGRAMMSCHALTER.id >> 8U),
+        static_cast<std::uint8_t>(Property::kPROGRAMMSCHALTER.id), 0x12, 0x34}));
+    assert(conditionalRequests.size() == 1);
+    assert(conditionalRequests.front()._request.first.canId == WPM.canId);
+    assert(conditionalRequests.front()._request.second.id == Property::kPROGRAMMSCHALTER.id);
+    assert(!conditionalRequests.front()._condition());
+
+    processNextTransmission();
+    assert(test_canbus.sent_data.size() == 2);
+    assert(test_canbus.sent_data[1] == (std::vector<std::uint8_t>{
+        static_cast<std::uint8_t>(Kessel.getWriteId() >> 8U), static_cast<std::uint8_t>(Kessel.getWriteId()),
+        0xfa, static_cast<std::uint8_t>(Property::kMINUTE.id >> 8U),
+        static_cast<std::uint8_t>(Property::kMINUTE.id), 0x56, 0x78}));
+    assert(conditionalRequests.size() == 2);
+    assert(conditionalRequests.back()._request.second.id == Property::kMINUTE.id);
+    assert(transmissions.empty());
+    processNextTransmission();
+    assert(test_canbus.sent_data.size() == 2);
 }

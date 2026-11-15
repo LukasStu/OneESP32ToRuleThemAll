@@ -25,23 +25,23 @@ number:
               case Type::et_little_endian: {
                   const auto value{static_cast<std::uint16_t>(x)};
                   const auto raw_value = static_cast<std::uint16_t>((((value >> 8U) & 0xFF) | ((value & 0xff) << 8U)));
-                  sendData(${target}, Property::k${property}, raw_value);
+                  queueTransmission(${target}, Property::k${property}, raw_value);
                   break;
                 }
               case Type::et_dec_val: {
-                  sendData(${target}, Property::k${property}, static_cast<std::uint16_t>(round(x * 10.0f)));
+                  queueTransmission(${target}, Property::k${property}, static_cast<std::uint16_t>(round(x * 10.0f)));
                   break;
                 }
               case Type::et_cent_val: {
-                  sendData(${target}, Property::k${property}, static_cast<std::uint16_t>(round(x * 100.0f)));
+                  queueTransmission(${target}, Property::k${property}, static_cast<std::uint16_t>(round(x * 100.0f)));
                   break;
                 }
               case Type::et_mil_val: {
-                  sendData(${target}, Property::k${property}, static_cast<std::uint16_t>(round(x * 1000.0f)));
+                  queueTransmission(${target}, Property::k${property}, static_cast<std::uint16_t>(round(x * 1000.0f)));
                   break;
                 }
               default:
-                sendData(${target}, Property::k${property}, static_cast<std::uint16_t>(round(x / ${step})));
+                queueTransmission(${target}, Property::k${property}, static_cast<std::uint16_t>(round(x / ${step})));
                 break;
             }
           }
