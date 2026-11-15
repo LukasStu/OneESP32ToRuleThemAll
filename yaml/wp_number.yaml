@@ -21,28 +21,11 @@ number:
           ESP_LOGI("Number", "Setting new value %f for %s", x, std::string(Property::k${property}.name).c_str());
           if(x != NAN) {
             const auto type = Property::k${property}.type;
-            switch(type) {
-              case Type::et_little_endian: {
-                  const auto value{static_cast<std::uint16_t>(x)};
-                  const auto raw_value = static_cast<std::uint16_t>((((value >> 8U) & 0xFF) | ((value & 0xff) << 8U)));
-                  queueTransmission(${target}, Property::k${property}, raw_value);
-                  break;
-                }
-              case Type::et_dec_val: {
-                  queueTransmission(${target}, Property::k${property}, static_cast<std::uint16_t>(round(x * 10.0f)));
-                  break;
-                }
-              case Type::et_cent_val: {
-                  queueTransmission(${target}, Property::k${property}, static_cast<std::uint16_t>(round(x * 100.0f)));
-                  break;
-                }
-              case Type::et_mil_val: {
-                  queueTransmission(${target}, Property::k${property}, static_cast<std::uint16_t>(round(x * 1000.0f)));
-                  break;
-                }
-              default:
-                queueTransmission(${target}, Property::k${property}, static_cast<std::uint16_t>(round(x / ${step})));
-                break;
+            const auto value = GetRawByType(SimpleVariant(x),type);
+            if(value.has_value()) {
+                queueTransmission(${target}, Property::k${property}, *value);
+            } else {
+              ESP_LOGE("Number", "Setting new value failed!");
             }
           }
 

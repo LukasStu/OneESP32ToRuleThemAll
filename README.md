@@ -24,6 +24,7 @@ This project aims to provide all kinds of useful features for your Home Assistan
 
 CAN write commands are queued and processed one at a time every 50 ms, independently of the read-request queue.
 After each write is sent, the corresponding value is requested again after 10 seconds.
+Numeric settings are encoded according to their property type; the UI step does not determine the CAN scale.
 
 ## Add new readings from heat pump / adopt to your device
 

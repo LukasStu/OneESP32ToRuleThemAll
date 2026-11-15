@@ -8,6 +8,15 @@ std::optional<std::string> Mapper::getError(const std::uint16_t id) const {
     return {};
 }
 
+std::optional<std::uint16_t> Mapper::getErrorId(const std::string& error) const {
+    for (const auto& element : errorMap) {
+        if (element.second == error) {
+            return element.first;
+        }
+    }
+    return {};
+}
+
 std::optional<std::string> Mapper::getBetriebsart(const std::uint16_t id) const {
     const auto it = betriebsartMap.find(id);
     if (it != betriebsartMap.end()) {
