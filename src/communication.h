@@ -63,24 +63,32 @@ std::optional<std::reference_wrapper<const CanMember>> getCanMemberByCanId(CANId
     return std::nullopt;
 }
 
+enum class MessageType : std::uint8_t { Write, Read, Response };
+
+constexpr MessageType getMessageType(const std::uint16_t id) {
+    if (id & 0x200) {
+        return MessageType::Response;
+    }
+    if (id & 0x100) {
+        return MessageType::Read;
+    }
+    return MessageType::Write;
+}
+
 /**
  * @brief Checks if the message is a request, sent by another CAN participant.
  */
 bool isRequest(const std::vector<std::uint8_t>& msg) {
-    const auto id{msg[1U] | (msg[0U] << 8U)};
-    const auto it = std::find_if(canMembers.cbegin(), canMembers.cend(),
-                                 [id](const auto& member) { return member.get().getReadId() == id; });
-    return it != canMembers.cend();
+    const auto id{static_cast<std::uint16_t>(msg[1U] | (msg[0U] << 8U))};
+    return getMessageType(id) == MessageType::Read;
 }
 
 /**
  * @brief Checks if the message is a response to a previously sent request. Responses contain the actual sensor value.
  */
 bool isResponse(const std::vector<std::uint8_t>& msg) {
-    const auto id{msg[1U] | (msg[0U] << 8U)};
-    const auto it = std::find_if(canMembers.cbegin(), canMembers.cend(),
-                                 [id](const auto& member) { return member.get().getResponseId() == id; });
-    return it != canMembers.cend();
+    const auto id{static_cast<std::uint16_t>(msg[1U] | (msg[0U] << 8U))};
+    return getMessageType(id) == MessageType::Response;
 }
 
 /**
