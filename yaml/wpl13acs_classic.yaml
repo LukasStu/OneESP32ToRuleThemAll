@@ -172,7 +172,7 @@ packages:
   # RUECKLAUFTEMP_QUELLE:       !include { file: wp_temperature.yaml, vars: { property: "RUECKLAUFTEMP_QUELLE" , target: "Manager"  }}
   VORLAUFISTTEMP:             !include { file: wp_temperature.yaml, vars: { property: "VORLAUFISTTEMP"     , update_interval: $interval_medium, target: "MFG"  }}
   VORLAUFISTTEMP_NHZ:         !include { file: wp_temperature.yaml, vars: { property: "VORLAUFISTTEMP_NHZ"  , update_interval: $interval_medium, target: "MFG"  }}
-  VERDAMPFERTEMP:             !include { file: wp_temperature.yaml, vars: { property: "VERDAMPFERTEMP" , update_interval: $interval_medium, target: "Kessel"  }}
+  VERDAMPFERTEMP:             !include { file: wp_temperature.yaml, vars: { property: "VERDAMPFERTEMP" , update_interval: $interval_medium, target: "Heizmodul"  }}
   RUECKLAUFISTTEMP:           !include { file: wp_temperature.yaml, vars: { property: "RUECKLAUFISTTEMP"   , update_interval: $interval_medium , target: "Kessel" }}
 
   RAUMFEUCHTE:                !include { file: wp_generic.yaml,     vars: { property: "RAUMFEUCHTE" , interval: $interval_medium, unit: "%", icon: "mdi:water-percent", accuracy_decimals: "1", target: "FET"  }}
