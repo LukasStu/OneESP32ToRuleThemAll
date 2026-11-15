@@ -164,7 +164,7 @@ packages:
   # ISTTEMPERATUR_HK1:          !include { file: wp_temperature.yaml, vars: { property: "ISTTEMPERATUR"     , name_suffix: "_HK1" , target: "HK1"  }}
   # KOMFORTTEMPERATUR_HK1:      !include { file: wp_temperature.yaml, vars: { property: "KOMFORTTEMPERATUR" , name_suffix: "_HK1" , target: "HK1"  }}
   # ECOTEMPERATUR_HK1:          !include { file: wp_temperature.yaml, vars: { property: "ECOTEMPERATUR"     , name_suffix: "_HK1" , target: "HK1"  }}
-  RAUMISTTEMP:                !include { file: wp_temperature.yaml, vars: { property: "RAUMISTTEMP" , interval: $interval_medium , target: "FET"  }}
+  RAUMISTTEMP:                !include { file: wp_temperature.yaml, vars: { property: "RAUMISTTEMP" , update_interval: $interval_medium , target: "FET"  }}
   # RAUMSOLLTEMP:               !include { file: wp_temperature.yaml, vars: { property: "RAUMSOLLTEMP"      , target: "FET"  }}
   PUFFERISTTEMPERATUR:        !include { file: wp_temperature.yaml, vars: { property: "PUFFERISTTEMPERATUR" }}
   # FROSTSCHUTZ:                !include { file: wp_temperature.yaml, vars: { property: "FROSTSCHUTZ"       , target: "MFG"  }}
@@ -175,14 +175,14 @@ packages:
   VERDAMPFERTEMP:             !include { file: wp_temperature.yaml, vars: { property: "VERDAMPFERTEMP" , update_interval: $interval_medium, target: "Heizmodul"  }}
   RUECKLAUFISTTEMP:           !include { file: wp_temperature.yaml, vars: { property: "RUECKLAUFISTTEMP"   , update_interval: $interval_medium , target: "Kessel" }}
 
-  RAUMFEUCHTE:                !include { file: wp_generic.yaml,     vars: { property: "RAUMFEUCHTE" , interval: $interval_medium, unit: "%", icon: "mdi:water-percent", accuracy_decimals: "1", target: "FET"  }}
+  RAUMFEUCHTE:                !include { file: wp_generic.yaml,     vars: { property: "RAUMFEUCHTE" , update_interval: $interval_medium, unit: "%", icon: "mdi:water-percent", accuracy_decimals: "1", target: "FET"  }}
   # HEIZEN_EFFIZIENZ_TAG:       !include { file: wp_generic.yaml,     vars: { property: "HEIZEN_EFFIZIENZ_TAG"  , target: "WPM", accuracy_decimals: "2" }}
   # HEIZEN_EFFIZIENZ_JAHR:      !include { file: wp_generic.yaml,     vars: { property: "HEIZEN_EFFIZIENZ_JAHR" , target: "WPM", accuracy_decimals: "2" }}
-  # QUELLENDRUCK:               !include { file: wp_generic.yaml,     vars: { property: "QUELLENDRUCK"          , interval: never, unit: "bar"  , icon: "mdi:water-pressure" , accuracy_decimals: "1", target: "Manager"  }}
-  # LEISTUNG_QUELLENPUMPE:      !include { file: wp_generic.yaml,     vars: { property: "LEISTUNG_QUELLENPUMPE" , interval: never, unit: "%"    , icon: "mdi:water-percent", accuracy_decimals: "1", target: "Manager"  }}
-  # VOLUMENSTROM:               !include { file: wp_generic.yaml,     vars: { property: "VOLUMENSTROM"          , interval: never, unit: "l/min", icon: "mdi:flow"           , accuracy_decimals: "1", target: "Manager"  }}
-  STROM_INVERTER:             !include { file: wp_generic.yaml,     vars: { property: "STROM_INVERTER"        , interval: never, unit: "A"    , target: "Heizmodul"        , accuracy_decimals: "1"  }}
-  SPANNUNG_INVERTER:          !include { file: wp_generic.yaml,     vars: { property: "SPANNUNG_INVERTER"     , interval: never, unit: "V"    , target: "Heizmodul"        , accuracy_decimals: "1"  }}
+  # QUELLENDRUCK:               !include { file: wp_generic.yaml,     vars: { property: "QUELLENDRUCK"          , update_interval: never, unit: "bar"  , icon: "mdi:water-pressure" , accuracy_decimals: "1", target: "Manager"  }}
+  # LEISTUNG_QUELLENPUMPE:      !include { file: wp_generic.yaml,     vars: { property: "LEISTUNG_QUELLENPUMPE" , update_interval: never, unit: "%"    , icon: "mdi:water-percent", accuracy_decimals: "1", target: "Manager"  }}
+  # VOLUMENSTROM:               !include { file: wp_generic.yaml,     vars: { property: "VOLUMENSTROM"          , update_interval: never, unit: "l/min", icon: "mdi:flow"           , accuracy_decimals: "1", target: "Manager"  }}
+  STROM_INVERTER:             !include { file: wp_generic.yaml,     vars: { property: "STROM_INVERTER"        , update_interval: never, unit: "A"    , target: "Heizmodul"        , accuracy_decimals: "1"  }}
+  SPANNUNG_INVERTER:          !include { file: wp_generic.yaml,     vars: { property: "SPANNUNG_INVERTER"     , update_interval: never, unit: "V"    , target: "Heizmodul"        , accuracy_decimals: "1"  }}
 
   # RAUMEINFLUSS:               !include { file: wp_number.yaml, vars: { property: "RAUMEINFLUSS", target: "WPM" }}
 
@@ -207,9 +207,9 @@ packages:
   T_03:                      !include { file: wp_temperature.yaml, vars: { property: "T_03" , update_interval: $interval_medium, target: "Kessel"  }}
   T_04:                      !include { file: wp_temperature.yaml, vars: { property: "T_04" , update_interval: $interval_medium, target: "MFG"  }}
 
-  LZ_VERD_1_HEIZBETRIEB:               !include { file: wp_generic.yaml,     vars: { property: "LZ_VERD_1_HEIZBETRIEB"          , interval: never, unit: "bar"  , icon: "mdi:water-pressure" , accuracy_decimals: "1", target: "Manager"  }}
-  LZ_VERD_1_KUEHLBETRIEB:              !include { file: wp_generic.yaml,     vars: { property: "LZ_VERD_1_KUEHLBETRIEB"          , interval: never, unit: "bar"  , icon: "mdi:water-pressure" , accuracy_decimals: "1", target: "Manager"  }}
-  LZ_VERD_1_WW_BETRIEB:                !include { file: wp_generic.yaml,     vars: { property: "LZ_VERD_1_WW_BETRIEB"          , interval: never, unit: "bar"  , icon: "mdi:water-pressure" , accuracy_decimals: "1", target: "Manager"  }}
+  LZ_VERD_1_HEIZBETRIEB:               !include { file: wp_generic.yaml,     vars: { property: "LZ_VERD_1_HEIZBETRIEB"          , update_interval: never, unit: "bar"  , icon: "mdi:water-pressure" , accuracy_decimals: "1", target: "Manager"  }}
+  LZ_VERD_1_KUEHLBETRIEB:              !include { file: wp_generic.yaml,     vars: { property: "LZ_VERD_1_KUEHLBETRIEB"          , update_interval: never, unit: "bar"  , icon: "mdi:water-pressure" , accuracy_decimals: "1", target: "Manager"  }}
+  LZ_VERD_1_WW_BETRIEB:                !include { file: wp_generic.yaml,     vars: { property: "LZ_VERD_1_WW_BETRIEB"          , update_interval: never, unit: "bar"  , icon: "mdi:water-pressure" , accuracy_decimals: "1", target: "Manager"  }}
 
   BIVALENZTEMPERATUR_HZG:   !include { file: wp_number.yaml, vars:  { property: "BIVALENZTEMPERATUR_HZG", icon: "mdi:sun-thermometer", min: "-30.0", max: "50.0", step: "0.1", unit: "°C", mode: "box" , target: "Manager"}}
   BIVALENZTEMPERATUR_WW:    !include { file: wp_number.yaml, vars:  { property: "BIVALENZTEMPERATUR_WW", icon: "mdi:sun-thermometer", min: "-30.0", max: "50.0", step: "0.1", unit: "°C", mode: "box" , target: "Manager"}}
