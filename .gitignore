@@ -7,3 +7,4 @@
 **/lib/
 **/platformio.ini
 /secrets.yaml
+/esphome-web-*-logs.txt
