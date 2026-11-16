@@ -108,6 +108,7 @@ struct Property : public detail::Property {
     PROPERTY(VERFLUESSIGERTEMP, 0x0a37, Type::et_dec_val);
     PROPERTY(OELSUMPFTEMP, 0x0a39, Type::et_dec_val);
     PROPERTY(WAERMEPUMPEN_STATUS, 0x02e2);
+    PROPERTY(STATUS_4E5E, 0x4e5e);
     PROPERTY(MINTEMP, 0x4ea4, Type::et_dec_val);
     PROPERTY(MAXTEMP, 0x4ea8, Type::et_dec_val);
     PROPERTY(MISCHERDYNAMIK, 0x4ea9);

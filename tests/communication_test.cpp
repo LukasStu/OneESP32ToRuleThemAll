@@ -42,6 +42,14 @@ int main() {
     assert(isResponse(responseWithBothBits));
     assert(!isRequest(responseWithBothBits));
 
+    const std::vector<std::uint8_t> statusResponse{0xd2, 0x22, 0xfa, 0x4e, 0x5e, 0x08, 0x00};
+    const auto [statusProperty, statusValue] = processCanMessage(statusResponse, 0x480);
+    assert(statusProperty.id == Property::kSTATUS_4E5E.id);
+    assert(statusValue.get<float>() == 2048.0f);
+
+    const std::vector<std::uint8_t> unavailableStatus{0xd2, 0x22, 0xfa, 0x4e, 0x5e, 0x80, 0x00};
+    assert(processCanMessage(unavailableStatus, 0x480).second.get<float>() == 32768.0f);
+
     processNextTransmission();
     assert(test_canbus.sent_data.empty());
     queueTransmission(WPM, Property::kPROGRAMMSCHALTER, 0x1234);
@@ -71,4 +79,9 @@ int main() {
     assert(transmissions.empty());
     processNextTransmission();
     assert(test_canbus.sent_data.size() == 2);
+
+    requestData(Manager, Property::kSTATUS_4E5E);
+    assert(test_canbus.sent_data.back() == (std::vector<std::uint8_t>{
+        static_cast<std::uint8_t>(Manager.getReadId() >> 8U), static_cast<std::uint8_t>(Manager.getReadId()),
+        0xfa, 0x4e, 0x5e, 0x00, 0x00}));
 }
