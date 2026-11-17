@@ -1,6 +1,7 @@
 #include <cassert>
 #include <string>
 
+#include "property.h"
 #include "type.h"
 
 int main() {
@@ -18,4 +19,10 @@ int main() {
     assert(GetRawByType(SimpleVariant(std::string("Komfort")), Type::et_betriebsart) == 0x0300);
     assert(GetRawByType(SimpleVariant(std::string("Hochdruck")), Type::et_err_nr) == 0x0004);
     assert(GetValueByType(*GetRawByType(SimpleVariant(-5.3f), Type::et_dec_val), Type::et_dec_val).get<float>() == -5.3f);
+    assert(GetValueByType(239, Property::kPUFFERSOLLTEMP.type).get<float>() == 23.9f);
+    assert(GetValueByType(41, Property::kHEIZUNGSDRUCK_WPL.type).get<float>() == 0.41f);
+    assert(GetValueByType(2479, Property::kVOLUMENSTROM_WPL.type).get<float>() == 24.79f);
+    assert(GetValueByType(40, Property::kANLAGENFROST.type).get<float>() == 4.0f);
+    assert(GetValueByType(491, Property::kRUECKLAUFTEMP_WP_VERMUTUNG.type).get<float>() == 49.1f);
+    assert(GetValueByType(520, Property::kVORLAUFTEMP_VERMUTUNG.type).get<float>() == 52.0f);
 }

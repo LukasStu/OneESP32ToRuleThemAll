@@ -168,17 +168,22 @@ packages:
   # ISTTEMPERATUR_HK1:          !include { file: wp_temperature.yaml, vars: { property: "ISTTEMPERATUR"     , name_suffix: "_HK1" , target: "HK1"  }}
   # KOMFORTTEMPERATUR_HK1:      !include { file: wp_temperature.yaml, vars: { property: "KOMFORTTEMPERATUR" , name_suffix: "_HK1" , target: "HK1"  }}
   # ECOTEMPERATUR_HK1:          !include { file: wp_temperature.yaml, vars: { property: "ECOTEMPERATUR"     , name_suffix: "_HK1" , target: "HK1"  }}
-  AUSSENTEMP:                 !include { file: wp_temperature.yaml, vars: { property: "AUSSENTEMP", update_interval: $interval_medium, target: "Kessel" }}
+  AUSSENTEMP:                 !include { file: wp_temperature.yaml, vars: { property: "AUSSENTEMP", display_name: "Außentemperatur", update_interval: $interval_medium, target: "Kessel" }}
   RAUMISTTEMP:                !include { file: wp_temperature.yaml, vars: { property: "RAUMISTTEMP" , update_interval: $interval_medium , target: "FET"  }}
   # RAUMSOLLTEMP:               !include { file: wp_temperature.yaml, vars: { property: "RAUMSOLLTEMP"      , target: "FET"  }}
-  PUFFERISTTEMPERATUR:        !include { file: wp_temperature.yaml, vars: { property: "PUFFERISTTEMPERATUR" }}
+  PUFFERISTTEMPERATUR:        !include { file: wp_temperature.yaml, vars: { property: "PUFFERISTTEMPERATUR", display_name: "Puffertemperatur" }}
+  PUFFERSOLLTEMP:             !include { file: wp_temperature.yaml, vars: { property: "PUFFERSOLLTEMP", display_name: "Puffersolltemperatur" }}
+  ANLAGENFROST:               !include { file: wp_temperature.yaml, vars: { property: "ANLAGENFROST", display_name: "Anlagenfrost" }}
+  SPEICHERISTTEMP:            !include { file: wp_temperature.yaml, vars: { property: "SPEICHERISTTEMP", display_name: "Warmwasser Isttemperatur", update_interval: $interval_medium }}
   # FROSTSCHUTZ:                !include { file: wp_temperature.yaml, vars: { property: "FROSTSCHUTZ"       , target: "MFG"  }}
   VORLAUFTEMP_QUELLE:         !include { file: wp_temperature.yaml, vars: { property: "VORLAUFTEMP_QUELLE" , update_interval: $interval_medium, target: "MFG"  }}
   # RUECKLAUFTEMP_QUELLE:       !include { file: wp_temperature.yaml, vars: { property: "RUECKLAUFTEMP_QUELLE" , target: "Manager"  }}
-  VORLAUFISTTEMP:             !include { file: wp_temperature.yaml, vars: { property: "VORLAUFISTTEMP"     , update_interval: $interval_medium, target: "MFG"  }}
-  VORLAUFISTTEMP_NHZ:         !include { file: wp_temperature.yaml, vars: { property: "VORLAUFISTTEMP_NHZ"  , update_interval: $interval_medium, target: "MFG"  }}
+  VORLAUFISTTEMP:             !include { file: wp_temperature.yaml, vars: { property: "VORLAUFISTTEMP"     , display_name: "Vorlauftemperatur WP", update_interval: $interval_medium, target: "MFG"  }}
+  VORLAUFISTTEMP_NHZ:         !include { file: wp_temperature.yaml, vars: { property: "VORLAUFISTTEMP_NHZ"  , display_name: "Vorlauftemperatur NHZ", update_interval: $interval_medium, target: "MFG"  }}
+  RUECKLAUFTEMP_WP_VERMUTUNG: !include { file: wp_temperature.yaml, vars: { property: "RUECKLAUFTEMP_WP_VERMUTUNG", display_name: "Rücklauftemperatur WP (Vermutung)", update_interval: $interval_medium, target: "Kessel" }}
+  VORLAUFTEMP_VERMUTUNG:      !include { file: wp_temperature.yaml, vars: { property: "VORLAUFTEMP_VERMUTUNG", display_name: "Vorlauftemperatur (Vermutung)", update_interval: $interval_medium, target: "Kessel" }}
   VERDAMPFERTEMP:             !include { file: wp_temperature.yaml, vars: { property: "VERDAMPFERTEMP" , update_interval: $interval_medium, target: "Heizmodul"  }}
-  RUECKLAUFISTTEMP:           !include { file: wp_temperature.yaml, vars: { property: "RUECKLAUFISTTEMP"   , update_interval: $interval_medium , target: "Kessel" }}
+  RUECKLAUFISTTEMP:           !include { file: wp_temperature.yaml, vars: { property: "RUECKLAUFISTTEMP"   , display_name: "Rücklauftemperatur", update_interval: $interval_medium , target: "Kessel" }}
 
   RAUMFEUCHTE:                !include { file: wp_generic.yaml,     vars: { property: "RAUMFEUCHTE" , update_interval: $interval_medium, unit: "%", icon: "mdi:water-percent", accuracy_decimals: "1", target: "FET"  }}
   BETRIEBS_STATUS:            !include { file: wp_generic.yaml,     vars: { property: "BETRIEBS_STATUS", update_interval: $interval_medium, target: "Manager" }}
@@ -187,8 +192,9 @@ packages:
   # HEIZEN_EFFIZIENZ_TAG:       !include { file: wp_generic.yaml,     vars: { property: "HEIZEN_EFFIZIENZ_TAG"  , target: "WPM", accuracy_decimals: "2" }}
   # HEIZEN_EFFIZIENZ_JAHR:      !include { file: wp_generic.yaml,     vars: { property: "HEIZEN_EFFIZIENZ_JAHR" , target: "WPM", accuracy_decimals: "2" }}
   # QUELLENDRUCK:               !include { file: wp_generic.yaml,     vars: { property: "QUELLENDRUCK"          , update_interval: never, unit: "bar"  , icon: "mdi:water-pressure" , accuracy_decimals: "1", target: "Manager"  }}
+  HEIZUNGSDRUCK_WPL:          !include { file: wp_generic.yaml,     vars: { property: "HEIZUNGSDRUCK_WPL"     , display_name: "Heizungsdruck", update_interval: $interval_slow, unit: "bar", icon: "mdi:gauge", accuracy_decimals: "2", target: "Kessel" }}
   # LEISTUNG_QUELLENPUMPE:      !include { file: wp_generic.yaml,     vars: { property: "LEISTUNG_QUELLENPUMPE" , update_interval: never, unit: "%"    , icon: "mdi:water-percent", accuracy_decimals: "1", target: "Manager"  }}
-  # VOLUMENSTROM:               !include { file: wp_generic.yaml,     vars: { property: "VOLUMENSTROM"          , update_interval: never, unit: "l/min", icon: "mdi:flow"           , accuracy_decimals: "1", target: "Manager"  }}
+  VOLUMENSTROM_WPL:           !include { file: wp_generic.yaml,     vars: { property: "VOLUMENSTROM_WPL"      , display_name: "Volumenstrom", update_interval: $interval_slow, unit: "l/min", icon: "mdi:flow"           , accuracy_decimals: "2", target: "Kessel"  }}
   STROM_INVERTER:             !include { file: wp_generic.yaml,     vars: { property: "STROM_INVERTER"        , update_interval: $interval_medium, unit: "A"    , target: "Heizmodul"        , accuracy_decimals: "1"  }}
   SPANNUNG_INVERTER:          !include { file: wp_generic.yaml,     vars: { property: "SPANNUNG_INVERTER"     , update_interval: $interval_medium, unit: "V"    , target: "Heizmodul"        , accuracy_decimals: "1"  }}
 

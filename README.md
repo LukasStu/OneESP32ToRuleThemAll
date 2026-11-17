@@ -36,6 +36,8 @@ Numeric settings are encoded according to their property type; the UI step does 
 6. Add the entities to the respective yaml and use the already existing templates. For config values that can be set, use the wp_number.yaml. For sensors that are updated automatically chose the template that fits best.
 7. profit
 
+The temperature and generic sensor templates accept an optional `display_name` to set the entity name independently of the property and internal ID.
+
 ## Troubleshooting
 ### You are not able to control your heat pump
  --> Increase the log level and try to find out which CAN identifiers to use. Also check the forum and communciation.h

@@ -5,10 +5,11 @@ defaults:
   update_interval: "never"
   unit: ""
   scaler: "1.0"
+  display_name: "${property}"
 
 sensor:
   - platform: template
-    name: ${property}
+    name: ${display_name}
     id: ${property}
     icon: ${icon}
     unit_of_measurement: ${unit}

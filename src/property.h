@@ -94,6 +94,7 @@ struct Property : public detail::Property {
     PROPERTY(T_03, 0x01D7, Type::et_dec_val);
     PROPERTY(T_04, 0xFE09, Type::et_dec_val);
     PROPERTY(PUFFERISTTEMPERATUR, 0x0078, Type::et_dec_val);
+    PROPERTY(PUFFERSOLLTEMP, 0x01D5, Type::et_dec_val);
     PROPERTY(SOLLTEMP_HK1, 0x0199, Type::et_dec_val);
     PROPERTY(VORLAUFTEMP, 0x01d6, Type::et_dec_val);
     PROPERTY(MAXVORLAUFTEMP, 0x01e8, Type::et_dec_val);
@@ -105,6 +106,7 @@ struct Property : public detail::Property {
     PROPERTY(SOLLDREHZAHL_VERDICHTER, 0x06ec);
     PROPERTY(VERDAMPFERTEMP, 0x07a9, Type::et_dec_val);
     PROPERTY(FROSTSCHUTZ, 0xfe07, Type::et_dec_val);
+    PROPERTY(ANLAGENFROST, 0x0A00, Type::et_dec_val);
     PROPERTY(VERFLUESSIGERTEMP, 0x0a37, Type::et_dec_val);
     PROPERTY(OELSUMPFTEMP, 0x0a39, Type::et_dec_val);
     PROPERTY(WAERMEPUMPEN_STATUS, 0x02e2);
@@ -120,8 +122,10 @@ struct Property : public detail::Property {
     PROPERTY(RAUMFEUCHTE, 0x0075, Type::et_dec_val);
     PROPERTY(TAUPUNKTTEMP, 0x4ee0, Type::et_dec_val);
     PROPERTY(RAUMEINFLUSS, 0x4f33);
-    PROPERTY(HEIZUNGSDRUCK, 0x4f46, et_cent_val);
+    PROPERTY(HEIZUNGSDRUCK, 0x4f46, Type::et_cent_val);
     PROPERTY(VOLUMENSTROM, 0x4f47, Type::et_dec_val);
+    PROPERTY(HEIZUNGSDRUCK_WPL, 0x0674, Type::et_cent_val);
+    PROPERTY(VOLUMENSTROM_WPL, 0x0673, Type::et_cent_val);
     PROPERTY(HEIZEN_EFFIZIENZ_TAG, 0x501d, Type::et_cent_val);
     PROPERTY(HEIZEN_EFFIZIENZ_JAHR, 0x501e, Type::et_cent_val);
     PROPERTY(RAUMSOLLTEMP_KUEHLEN, 0x4f04, Type::et_dec_val);
@@ -141,6 +145,8 @@ struct Property : public detail::Property {
     PROPERTY(PROGRAMMSCHALTER, 0x0112, Type::et_betriebsart);
     PROPERTY(VORLAUFISTTEMP_NHZ, 0xfdf5, Type::et_dec_val);
     PROPERTY(RUECKLAUFISTTEMP_WP, 0x0016, Type::et_dec_val);
+    PROPERTY(RUECKLAUFTEMP_WP_VERMUTUNG, 0x06ac, Type::et_dec_val);
+    PROPERTY(VORLAUFTEMP_VERMUTUNG, 0x06a2, Type::et_dec_val);
     PROPERTY(LEISTUNG_KUEHLEN, 0x7a40, Type::et_dec_val);
     PROPERTY(RUECKLAUFISTTEMP, 0x02CA, Type::et_dec_val);
 
