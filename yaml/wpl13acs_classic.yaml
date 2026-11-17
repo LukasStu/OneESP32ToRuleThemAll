@@ -181,7 +181,9 @@ packages:
   RUECKLAUFISTTEMP:           !include { file: wp_temperature.yaml, vars: { property: "RUECKLAUFISTTEMP"   , update_interval: $interval_medium , target: "Kessel" }}
 
   RAUMFEUCHTE:                !include { file: wp_generic.yaml,     vars: { property: "RAUMFEUCHTE" , update_interval: $interval_medium, unit: "%", icon: "mdi:water-percent", accuracy_decimals: "1", target: "FET"  }}
+  BETRIEBS_STATUS:            !include { file: wp_generic.yaml,     vars: { property: "BETRIEBS_STATUS", update_interval: $interval_medium, target: "Manager" }}
   STATUS_4E5E:                !include { file: wp_generic.yaml,     vars: { property: "STATUS_4E5E", update_interval: $interval_medium, target: "Manager" }}
+  WAERMEPUMPEN_STATUS:        !include { file: wp_generic.yaml,     vars: { property: "WAERMEPUMPEN_STATUS", update_interval: $interval_medium, target: "Heizmodul" }}
   # HEIZEN_EFFIZIENZ_TAG:       !include { file: wp_generic.yaml,     vars: { property: "HEIZEN_EFFIZIENZ_TAG"  , target: "WPM", accuracy_decimals: "2" }}
   # HEIZEN_EFFIZIENZ_JAHR:      !include { file: wp_generic.yaml,     vars: { property: "HEIZEN_EFFIZIENZ_JAHR" , target: "WPM", accuracy_decimals: "2" }}
   # QUELLENDRUCK:               !include { file: wp_generic.yaml,     vars: { property: "QUELLENDRUCK"          , update_interval: never, unit: "bar"  , icon: "mdi:water-pressure" , accuracy_decimals: "1", target: "Manager"  }}
