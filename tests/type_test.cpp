@@ -25,4 +25,7 @@ int main() {
     assert(GetValueByType(40, Property::kANLAGENFROST.type).get<float>() == 4.0f);
     assert(GetValueByType(491, Property::kRUECKLAUFTEMP_WP_VERMUTUNG.type).get<float>() == 49.1f);
     assert(GetValueByType(520, Property::kVORLAUFTEMP_VERMUTUNG.type).get<float>() == 52.0f);
+    assert(GetValueByType(65336, Property::kEINSATZGRENZE_HZG_VERMUTUNG.type).get<float>() == -20.0f);
+    assert(GetValueByType(466, Property::kSAUGGASTEMP_VERDICHTER.type).get<float>() == 46.6f);
+    assert(GetValueByType(378, Property::kVERDAMPFEREINGANGSTEMP_VERMUTUNG.type).get<float>() == 37.8f);
 }
