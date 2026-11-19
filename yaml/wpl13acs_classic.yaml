@@ -278,7 +278,6 @@ packages:
   VD_HEIZBETRIEB:                      !include { file: wp_generic.yaml,      vars: { property: "VD_HEIZBETRIEB"                  , update_interval: $interval_medium, unit: "h"    , icon: "mdi:clock-outline" , accuracy_decimals: "0", target: "Manager"  }}
   VD_KUEHLEN:                           !include { file: wp_generic.yaml,      vars: { property: "VD_KUEHLEN", display_name: "Verdichterstunden Kühlen", update_interval: $interval_medium, unit: "h", icon: "mdi:clock-outline", accuracy_decimals: "0", target: "Manager" }}
   VD_WW_BETRIEB:                       !include { file: wp_generic.yaml,      vars: { property: "VD_WW_BETRIEB"                    , update_interval: $interval_medium, unit: "h"    , icon: "mdi:clock-outline" , accuracy_decimals: "0", target: "Manager"  }}
-  VD_ABTAUEN:                          !include { file: wp_generic.yaml,      vars: { property: "VD_ABTAUEN"                       , update_interval: $interval_medium, unit: "h"    , icon: "mdi:clock-outline" , accuracy_decimals: "0", target: "Manager"  }}
 
   BIVALENZTEMPERATUR_HZG:   !include { file: wp_number.yaml, vars:  { property: "BIVALENZTEMPERATUR_HZG", icon: "mdi:sun-thermometer", min: "-30.0", max: "50.0", step: "0.1", unit: "°C", mode: "box" , target: "Manager"}}
   BIVALENZTEMPERATUR_WW:    !include { file: wp_number.yaml, vars:  { property: "BIVALENZTEMPERATUR_WW", icon: "mdi:sun-thermometer", min: "-30.0", max: "50.0", step: "0.1", unit: "°C", mode: "box" , target: "Manager"}}
