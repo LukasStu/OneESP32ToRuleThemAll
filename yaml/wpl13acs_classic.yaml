@@ -205,7 +205,7 @@ packages:
   # HEIZEN_EFFIZIENZ_TAG:       !include { file: wp_generic.yaml,     vars: { property: "HEIZEN_EFFIZIENZ_TAG"  , target: "WPM", accuracy_decimals: "2" }}
   # HEIZEN_EFFIZIENZ_JAHR:      !include { file: wp_generic.yaml,     vars: { property: "HEIZEN_EFFIZIENZ_JAHR" , target: "WPM", accuracy_decimals: "2" }}
   # QUELLENDRUCK:               !include { file: wp_generic.yaml,     vars: { property: "QUELLENDRUCK"          , update_interval: never, unit: "bar"  , icon: "mdi:water-pressure" , accuracy_decimals: "1", target: "Manager"  }}
-  HEIZUNGSDRUCK_WPL:          !include { file: wp_generic.yaml,     vars: { property: "HEIZUNGSDRUCK_WPL"     , display_name: "Heizungsdruck", update_interval: $interval_slow, unit: "bar", icon: "mdi:gauge", accuracy_decimals: "2", target: "Kessel" }}
+  HEIZUNGSDRUCK_WPL:          !include { file: wp_generic.yaml,     vars: { property: "HEIZUNGSDRUCK_WPL"     , display_name: "Heizungsdruck", update_interval: $interval_very_fast, unit: "bar", icon: "mdi:gauge", accuracy_decimals: "2", target: "Kessel" }}
   # LEISTUNG_QUELLENPUMPE:      !include { file: wp_generic.yaml,     vars: { property: "LEISTUNG_QUELLENPUMPE" , update_interval: never, unit: "%"    , icon: "mdi:water-percent", accuracy_decimals: "1", target: "Manager"  }}
   VOLUMENSTROM_WPL:           !include { file: wp_generic.yaml,     vars: { property: "VOLUMENSTROM_WPL"      , display_name: "Volumenstrom", update_interval: $interval_slow, unit: "l/min", icon: "mdi:flow"           , accuracy_decimals: "2", target: "Kessel"  }}
   # WPL pressure values are hundredths; the shared properties use tenths.
