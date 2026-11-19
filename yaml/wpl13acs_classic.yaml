@@ -130,6 +130,7 @@ select:
       - "Programm"
       - "Komfort"
       - "Eco"
+      - "Warmwasser"
       - "Unbekannt"
     initial_option: "Unbekannt"
     optimistic: true
