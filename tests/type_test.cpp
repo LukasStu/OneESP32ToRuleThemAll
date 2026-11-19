@@ -32,4 +32,5 @@ int main() {
     assert(!GetValueByType(0x0000, Property::kSOMMERBETRIEB.type).get<bool>());
     assert(GetValueByType(0x0001, Property::kKUEHLEN.type).get<bool>());
     assert(!GetValueByType(0x0000, Property::kKUEHLEN.type).get<bool>());
+    assert(Property(0x01D7).name == "SOLLTEMP_HK1");
 }

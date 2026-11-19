@@ -93,7 +93,7 @@ struct Property : public detail::Property {
     PROPERTY(T_02, 0xfdf4, Type::et_dec_val);
     PROPERTY(T_03, 0x0199, Type::et_dec_val);
     PROPERTY(T_04, 0xFE09, Type::et_dec_val);
-    PROPERTY(T_05, 0x01D7, Type::et_dec_val);
+    PROPERTY(SOLLTEMP_HK1, 0x01D7, Type::et_dec_val);
     PROPERTY(T_06, 0x0016, Type::et_dec_val);
     PROPERTY(PUFFERISTTEMPERATUR, 0x0078, Type::et_dec_val);
     PROPERTY(PUFFERSOLLTEMP, 0x01D5, Type::et_dec_val);

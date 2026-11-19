@@ -273,7 +273,6 @@ packages:
   T_02:                      !include { file: wp_temperature.yaml, vars: { property: "T_02" , update_interval: $interval_medium, target: "MFG"  }}
   T_03:                      !include { file: wp_temperature.yaml, vars: { property: "T_03" , update_interval: $interval_medium, target: "Kessel"  }}
   T_04:                      !include { file: wp_temperature.yaml, vars: { property: "T_04" , update_interval: $interval_medium, target: "MFG"  }}
-  T_05:                      !include { file: wp_temperature.yaml, vars: { property: "T_05", display_name: "T_05", update_interval: $interval_medium, target: "Heizmodul" }}
   T_06:                      !include { file: wp_temperature.yaml, vars: { property: "T_06", display_name: "T_06", update_interval: $interval_medium, target: "Heizmodul" }}
   VD_HEIZBETRIEB:                      !include { file: wp_generic.yaml,      vars: { property: "VD_HEIZBETRIEB"                  , update_interval: $interval_medium, unit: "h"    , icon: "mdi:clock-outline" , accuracy_decimals: "0", target: "Manager"  }}
   VD_KUEHLEN:                           !include { file: wp_generic.yaml,      vars: { property: "VD_KUEHLEN", display_name: "Verdichterstunden Kühlen", update_interval: $interval_medium, unit: "h", icon: "mdi:clock-outline", accuracy_decimals: "0", target: "Manager" }}
