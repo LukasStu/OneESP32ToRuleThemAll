@@ -189,7 +189,7 @@ packages:
 
   AUSSENTEMP:                 !include { file: wp_temperature.yaml, vars: { property: "AUSSENTEMP", display_name: "Außentemperatur", update_interval: $interval_medium, target: "Kessel" }}
   RUECKLAUF_HEIZMODUL:        !include { file: wp_temperature.yaml, vars: { property: "RUECKLAUFISTTEMP_WP", display_name: "Rücklauftemperatur HK1", update_interval: $interval_fast, target: "Heizmodul" }}
-  VORLAUF_HEIZMODUL:          !include { file: wp_temperature.yaml, vars: { property: "VORLAUFTEMP", display_name: "Solltemperatur HK1", update_interval: $interval_fast, target: "Heizmodul" }}
+  VORLAUF_HEIZMODUL:          !include { file: wp_temperature.yaml, vars: { property: "SOLLTEMP_HK1", display_name: "Solltemperatur HK1", update_interval: $interval_fast, target: "Heizmodul" }}
   VORLAUFISTTEMP:             !include { file: wp_temperature.yaml, vars: { property: "VORLAUFISTTEMP"     , display_name: "Vorlaufisttemperatur WP", update_interval: $interval_fast, target: "MFG"  }}
   VORLAUFISTTEMP_NHZ:         !include { file: wp_temperature.yaml, vars: { property: "VORLAUFISTTEMP_NHZ"  , display_name: "Vorlaufisttemperatur NHZ", update_interval: $interval_fast, target: "MFG"  }}
   RUECKLAUFTEMP_WP_VERMUTUNG: !include { file: wp_temperature.yaml, vars: { property: "RUECKLAUFTEMP_WP_VERMUTUNG", display_name: "Rücklauftemperatur WP (Vermutung)", update_interval: $interval_fast, target: "Kessel" }}

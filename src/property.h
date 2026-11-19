@@ -91,11 +91,11 @@ struct Property : public detail::Property {
     PROPERTY(ECOTEMPERATUR_WW, 0x0A06, Type::et_dec_val);
     PROPERTY(T_01, 0x0A36, Type::et_dec_val);
     PROPERTY(T_02, 0xfdf4, Type::et_dec_val);
-    PROPERTY(T_03, 0x01D7, Type::et_dec_val);
+    PROPERTY(T_03, 0x0199, Type::et_dec_val);
     PROPERTY(T_04, 0xFE09, Type::et_dec_val);
     PROPERTY(PUFFERISTTEMPERATUR, 0x0078, Type::et_dec_val);
     PROPERTY(PUFFERSOLLTEMP, 0x01D5, Type::et_dec_val);
-    PROPERTY(SOLLTEMP_HK1, 0x0199, Type::et_dec_val);
+    PROPERTY(SOLLTEMP_HK1, 0x01D7, Type::et_dec_val);
     PROPERTY(VORLAUFTEMP, 0x01d6, Type::et_dec_val);
     PROPERTY(MAXVORLAUFTEMP, 0x01e8, Type::et_dec_val);
     PROPERTY(TAUPUNKTTEMP_KESSEL_VERMUTUNG, 0x0264, Type::et_dec_val);
