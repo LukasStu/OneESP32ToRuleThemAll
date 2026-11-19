@@ -220,10 +220,10 @@ packages:
   # Anlagenfrost
 
   AUSSENTEMP:                 !include { file: wp_temperature.yaml, vars: { property: "AUSSENTEMP", display_name: "Außentemperatur", update_interval: $interval_medium, target: "Kessel" }}
-  T_06:        !include { file: wp_temperature.yaml, vars: { property: "T_06", display_name: "T_06", update_interval: $interval_fast, target: "Heizmodul" }}
+  SOLLTEMP_HK1:               !include { file: wp_temperature.yaml, vars: { property: "SOLLTEMP_HK1", display_name: "Solltemperatur HK1", update_interval: $interval_fast, target: "Heizmodul" }}
   VORLAUFISTTEMP:             !include { file: wp_temperature.yaml, vars: { property: "VORLAUFISTTEMP"     , display_name: "Vorlaufisttemperatur WP", update_interval: $interval_fast, target: "MFG"  }}
   VORLAUFISTTEMP_NHZ:         !include { file: wp_temperature.yaml, vars: { property: "VORLAUFISTTEMP_NHZ"  , display_name: "Vorlaufisttemperatur NHZ", update_interval: $interval_fast, target: "MFG"  }}
-  RUECKLAUFTEMP_WP_VERMUTUNG: !include { file: wp_temperature.yaml, vars: { property: "RUECKLAUFTEMP_WP_VERMUTUNG", display_name: "Rücklauftemperatur WP (Vermutung)", update_interval: $interval_fast, target: "Kessel" }}
+  RUECKLAUFTEMP_WP_VERMUTUNG: !include { file: wp_temperature.yaml, vars: { property: "RUECKLAUFTEMP_WP_VERMUTUNG", display_name: "Rücklauftemperatur WP", update_interval: $interval_fast, target: "Kessel" }}
   VORLAUFTEMP_VERMUTUNG:      !include { file: wp_temperature.yaml, vars: { property: "VORLAUFTEMP_VERMUTUNG", display_name: "Vorlaufisttemperatur", update_interval: $interval_fast, target: "Kessel" }}
   RUECKLAUFISTTEMP:           !include { file: wp_temperature.yaml, vars: { property: "RUECKLAUFISTTEMP"   , display_name: "Rücklaufisttemperatur", update_interval: $interval_fast , target: "Kessel" }}
   PUFFERISTTEMPERATUR:        !include { file: wp_temperature.yaml, vars: { property: "PUFFERISTTEMPERATUR", display_name: "Puffertemperatur" }}
@@ -273,8 +273,8 @@ packages:
   T_02:                      !include { file: wp_temperature.yaml, vars: { property: "T_02" , update_interval: $interval_medium, target: "MFG"  }}
   T_03:                      !include { file: wp_temperature.yaml, vars: { property: "T_03" , update_interval: $interval_medium, target: "Kessel"  }}
   T_04:                      !include { file: wp_temperature.yaml, vars: { property: "T_04" , update_interval: $interval_medium, target: "MFG"  }}
-  T_05:         !include { file: wp_temperature.yaml, vars: { property: "T_05", display_name: "T_05", update_interval: $interval_fast, target: "Heizmodul" }}
-
+  T_05:                      !include { file: wp_temperature.yaml, vars: { property: "T_05", display_name: "T_05", update_interval: $interval_medium, target: "Heizmodul" }}
+  T_06:                      !include { file: wp_temperature.yaml, vars: { property: "T_06", display_name: "T_06", update_interval: $interval_medium, target: "Heizmodul" }}
   VD_HEIZBETRIEB:                      !include { file: wp_generic.yaml,      vars: { property: "VD_HEIZBETRIEB"                  , update_interval: $interval_medium, unit: "h"    , icon: "mdi:clock-outline" , accuracy_decimals: "0", target: "Manager"  }}
   VD_KUEHLEN:                           !include { file: wp_generic.yaml,      vars: { property: "VD_KUEHLEN", display_name: "Verdichterstunden Kühlen", update_interval: $interval_medium, unit: "h", icon: "mdi:clock-outline", accuracy_decimals: "0", target: "Manager" }}
   VD_WW_BETRIEB:                       !include { file: wp_generic.yaml,      vars: { property: "VD_WW_BETRIEB"                    , update_interval: $interval_medium, unit: "h"    , icon: "mdi:clock-outline" , accuracy_decimals: "0", target: "Manager"  }}
