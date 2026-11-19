@@ -189,8 +189,7 @@ packages:
   # Anlagenfrost
 
   AUSSENTEMP:                 !include { file: wp_temperature.yaml, vars: { property: "AUSSENTEMP", display_name: "Außentemperatur", update_interval: $interval_medium, target: "Kessel" }}
-  RUECKLAUF_HEIZMODUL:        !include { file: wp_temperature.yaml, vars: { property: "RUECKLAUFISTTEMP_WP", display_name: "Rücklauftemperatur HK1", update_interval: $interval_fast, target: "Heizmodul" }}
-  VORLAUF_HEIZMODUL:          !include { file: wp_temperature.yaml, vars: { property: "SOLLTEMP_HK1", display_name: "Solltemperatur HK1", update_interval: $interval_fast, target: "Heizmodul" }}
+  T_06:        !include { file: wp_temperature.yaml, vars: { property: "T_06", display_name: "T_06", update_interval: $interval_fast, target: "Heizmodul" }}
   VORLAUFISTTEMP:             !include { file: wp_temperature.yaml, vars: { property: "VORLAUFISTTEMP"     , display_name: "Vorlaufisttemperatur WP", update_interval: $interval_fast, target: "MFG"  }}
   VORLAUFISTTEMP_NHZ:         !include { file: wp_temperature.yaml, vars: { property: "VORLAUFISTTEMP_NHZ"  , display_name: "Vorlaufisttemperatur NHZ", update_interval: $interval_fast, target: "MFG"  }}
   RUECKLAUFTEMP_WP_VERMUTUNG: !include { file: wp_temperature.yaml, vars: { property: "RUECKLAUFTEMP_WP_VERMUTUNG", display_name: "Rücklauftemperatur WP (Vermutung)", update_interval: $interval_fast, target: "Kessel" }}
@@ -213,7 +212,6 @@ packages:
   BETRIEBS_STATUS:            !include { file: wp_generic.yaml,     vars: { property: "BETRIEBS_STATUS", update_interval: $interval_medium, target: "Manager" }}
   STATUS_4E5E:                !include { file: wp_generic.yaml,     vars: { property: "STATUS_4E5E", update_interval: $interval_medium, target: "Manager" }}
   WAERMEPUMPEN_STATUS:        !include { file: wp_generic.yaml,     vars: { property: "WAERMEPUMPEN_STATUS", update_interval: $interval_medium, target: "Heizmodul" }}
-  # WPL pressure values are hundredths; the shared properties use tenths.
   DRUCK_HOCHDRUCK:            !include { file: wp_generic.yaml, vars: { property: "DRUCK_HOCHDRUCK", display_name: "Druck Hochdruck", update_interval: $interval_medium, unit: "bar", icon: "mdi:gauge", accuracy_decimals: "2", scaler: "0.1", target: "Heizmodul" }}
   DRUCK_NIEDERDRUCK:          !include { file: wp_generic.yaml, vars: { property: "DRUCK_NIEDERDRUCK", display_name: "Druck Niederdruck", update_interval: $interval_medium, unit: "bar", icon: "mdi:gauge", accuracy_decimals: "2", scaler: "0.1", target: "Heizmodul" }}
   ISTDREHZAHL_VERDICHTER_VERMUTUNG: !include { file: wp_generic.yaml, vars: { property: "ISTDREHZAHL_VERDICHTER_VERMUTUNG", display_name: "Istdrehzahl Verdichter (Vermutung)", update_interval: $interval_medium, unit: "Hz", icon: "mdi:counter", target: "Heizmodul" }}
@@ -223,8 +221,8 @@ packages:
   SPANNUNG_INVERTER:          !include { file: wp_generic.yaml,     vars: { property: "SPANNUNG_INVERTER"     , update_interval: $interval_medium, unit: "V"    , target: "Heizmodul"        , accuracy_decimals: "1"  }}
 
   # RAUMEINFLUSS:               !include { file: wp_number.yaml, vars: { property: "RAUMEINFLUSS", target: "WPM" }}
-
   # VERDICHTER_STARTS:            !include { file: wp_generic_combined.yaml, vars: { sensor_name: "VERDICHTER_STARTS"           , scaled_property: "VERDICHTER_STARTS_K"       , property: "VERDICHTER_STARTS"         , unit: ""   , accuracy_decimals: "0", scaler: "1000", icon: "mdi:counter" , target: "Manager" }}
+ 
   WAERMEERTRAG_WW_SUMME_MWH:    !include { file: wp_generic_combined.yaml, vars: { sensor_name: "WAERMEERTRAG_WW_SUMME_MWH"   , scaled_property: "WAERMEERTRAG_WW_SUM_KWH"   , property: "WAERMEERTRAG_WW_SUM_MWH"   , unit: "MWh", accuracy_decimals: "3", icon: "mdi:fire" , target: "Manager"  }}
   WAERMEERTRAG_HEIZ_SUMME_MWH:  !include { file: wp_generic_combined.yaml, vars: { sensor_name: "WAERMEERTRAG_HEIZ_SUMME_MWH" , scaled_property: "WAERMEERTRAG_HEIZ_SUM_KWH" , property: "WAERMEERTRAG_HEIZ_SUM_MWH" , unit: "MWh", accuracy_decimals: "3", icon: "mdi:fire" , target: "Manager"  }}
 
@@ -244,6 +242,7 @@ packages:
   T_02:                      !include { file: wp_temperature.yaml, vars: { property: "T_02" , update_interval: $interval_medium, target: "MFG"  }}
   T_03:                      !include { file: wp_temperature.yaml, vars: { property: "T_03" , update_interval: $interval_medium, target: "Kessel"  }}
   T_04:                      !include { file: wp_temperature.yaml, vars: { property: "T_04" , update_interval: $interval_medium, target: "MFG"  }}
+  T_05:         !include { file: wp_temperature.yaml, vars: { property: "T_05", display_name: "T_05", update_interval: $interval_fast, target: "Heizmodul" }}
 
   VD_HEIZBETRIEB:                      !include { file: wp_generic.yaml,      vars: { property: "VD_HEIZBETRIEB"                  , update_interval: $interval_medium, unit: "h"    , icon: "mdi:clock-outline" , accuracy_decimals: "0", target: "Manager"  }}
   VD_KUEHLBETRIEB:                     !include { file: wp_generic.yaml,      vars: { property: "VD_KUEHLBETRIEB"                 , update_interval: $interval_medium, unit: "h"    , icon: "mdi:clock-outline" , accuracy_decimals: "0", target: "Manager"  }}
