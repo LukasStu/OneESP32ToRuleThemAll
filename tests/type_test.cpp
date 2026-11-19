@@ -28,4 +28,8 @@ int main() {
     assert(GetValueByType(65336, Property::kEINSATZGRENZE_HZG_VERMUTUNG.type).get<float>() == -20.0f);
     assert(GetValueByType(466, Property::kSAUGGASTEMP_VERDICHTER.type).get<float>() == 46.6f);
     assert(GetValueByType(378, Property::kVERDAMPFEREINGANGSTEMP_VERMUTUNG.type).get<float>() == 37.8f);
+    assert(GetValueByType(0x0100, Property::kSOMMERBETRIEB.type).get<bool>());
+    assert(!GetValueByType(0x0000, Property::kSOMMERBETRIEB.type).get<bool>());
+    assert(GetValueByType(0x0001, Property::kKUEHLEN.type).get<bool>());
+    assert(!GetValueByType(0x0000, Property::kKUEHLEN.type).get<bool>());
 }

@@ -144,6 +144,8 @@ struct Property : public detail::Property {
     PROPERTY(DRUCK_NIEDERDRUCK, 0x07a7, Type::et_dec_val);
     PROPERTY(VORLAUFISTTEMP, 0xfdf3, Type::et_dec_val);
     PROPERTY(BETRIEBS_STATUS, 0x4ecd);
+    PROPERTY(SOMMERBETRIEB, 0xfdb4, Type::et_little_bool);
+    PROPERTY(KUEHLEN, 0x06a4, Type::et_bool);
     PROPERTY(VERDICHTER_STARTS, 0x4ef1);
     PROPERTY(VERDICHTER_STARTS_K, 0x4ef0);
     PROPERTY(HYSTERESE_VORLAUFTEMP_KUEHLEN, 0x4f00, Type::et_dec_val);
@@ -164,7 +166,7 @@ struct Property : public detail::Property {
     PROPERTY(EINSATZGRENZE_WW_VERMUTUNG, 0x01af, Type::et_dec_val);
 
     PROPERTY(VD_HEIZBETRIEB, 0x07fc, Type::et_default);
-    PROPERTY(VD_KUEHLBETRIEB, 0x07ff, Type::et_default);
+    PROPERTY(VD_KUEHLEN, 0x07ff, Type::et_default);
     PROPERTY(VD_WW_BETRIEB, 0x0802, Type::et_default);
     PROPERTY(VD_ABTAUEN, 0x0808, Type::et_default);
 };

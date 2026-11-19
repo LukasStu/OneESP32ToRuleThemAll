@@ -33,6 +33,16 @@ esphome:
           });
           queueRequest(WPM, Property::kPROGRAMMSCHALTER);
 
+          CallbackHandler::instance().addCallback(std::make_pair(Kessel,Property::kSOMMERBETRIEB),[](const SimpleVariant& value){
+            id(SOMMERBETRIEB).publish_state(value.get<bool>());
+          });
+          queueRequest(Kessel, Property::kSOMMERBETRIEB);
+
+          CallbackHandler::instance().addCallback(std::make_pair(Kessel,Property::kKUEHLEN),[](const SimpleVariant& value){
+            id(KUEHLEN).publish_state(value.get<bool>());
+          });
+          queueRequest(Kessel, Property::kKUEHLEN);
+
 substitutions:
   espclient_can_id: "0x6a2"
   manager_can_id: "0x480"
@@ -143,6 +153,28 @@ select:
               queueTransmission(WPM, Property::kPROGRAMMSCHALTER, (betriebsartId.value()));
             }
 
+switch:
+  - platform: template
+    name: "Sommerbetrieb"
+    id: SOMMERBETRIEB
+    optimistic: true
+    turn_on_action:
+      - lambda: |-
+          queueTransmission(Kessel, Property::kSOMMERBETRIEB, static_cast<std::uint16_t>(0x0100U));
+    turn_off_action:
+      - lambda: |-
+          queueTransmission(Kessel, Property::kSOMMERBETRIEB, 0U);
+  - platform: template
+    name: "Kühlen"
+    id: KUEHLEN
+    optimistic: true
+    turn_on_action:
+      - lambda: |-
+          queueTransmission(Kessel, Property::kKUEHLEN, 1U);
+    turn_off_action:
+      - lambda: |-
+          queueTransmission(Kessel, Property::kKUEHLEN, 0U);
+
 #########################################
 #                                       #
 #   Packages                            #
@@ -153,7 +185,6 @@ packages:
   # PUFFERLADEPUMPE_1:         !include { file: wp_binary.yaml, vars: { name: "PUFFERLADEPUMPE_1" }}
   # QUELLENPUMPE:              !include { file: wp_binary.yaml, vars: { name: "QUELLENPUMPE" }}
   # STOERAUSGANG:              !include { file: wp_binary.yaml, vars: { name: "STOERAUSGANG" }}
-  # KUEHLBETRIEB:              !include { file: wp_binary.yaml, vars: { name: "KUEHLBETRIEB" }}
   # NHZ_1:                     !include { file: wp_binary.yaml, vars: { name: "NHZ_1" }}
   # EVU_SPERRE:                !include { file: wp_binary.yaml, vars: { name: "EVU_SPERRE" }}
   # VERDICHTER:                !include { file: wp_binary.yaml, vars: { name: "VERDICHTER" }}
@@ -245,7 +276,7 @@ packages:
   T_05:         !include { file: wp_temperature.yaml, vars: { property: "T_05", display_name: "T_05", update_interval: $interval_fast, target: "Heizmodul" }}
 
   VD_HEIZBETRIEB:                      !include { file: wp_generic.yaml,      vars: { property: "VD_HEIZBETRIEB"                  , update_interval: $interval_medium, unit: "h"    , icon: "mdi:clock-outline" , accuracy_decimals: "0", target: "Manager"  }}
-  VD_KUEHLBETRIEB:                     !include { file: wp_generic.yaml,      vars: { property: "VD_KUEHLBETRIEB"                 , update_interval: $interval_medium, unit: "h"    , icon: "mdi:clock-outline" , accuracy_decimals: "0", target: "Manager"  }}
+  VD_KUEHLEN:                           !include { file: wp_generic.yaml,      vars: { property: "VD_KUEHLEN", display_name: "Verdichterstunden Kühlen", update_interval: $interval_medium, unit: "h", icon: "mdi:clock-outline", accuracy_decimals: "0", target: "Manager" }}
   VD_WW_BETRIEB:                       !include { file: wp_generic.yaml,      vars: { property: "VD_WW_BETRIEB"                    , update_interval: $interval_medium, unit: "h"    , icon: "mdi:clock-outline" , accuracy_decimals: "0", target: "Manager"  }}
   VD_ABTAUEN:                          !include { file: wp_generic.yaml,      vars: { property: "VD_ABTAUEN"                       , update_interval: $interval_medium, unit: "h"    , icon: "mdi:clock-outline" , accuracy_decimals: "0", target: "Manager"  }}
 
