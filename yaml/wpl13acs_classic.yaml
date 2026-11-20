@@ -242,6 +242,7 @@ packages:
    
   BETRIEBS_STATUS:            !include { file: wp_generic.yaml,     vars: { property: "BETRIEBS_STATUS", update_interval: $interval_medium, target: "Manager" }}
   STATUS_4E5E:                !include { file: wp_generic.yaml,     vars: { property: "STATUS_4E5E", update_interval: $interval_medium, target: "Manager" }}
+  STATUS_4E6A:                !include { file: wp_generic.yaml,     vars: { property: "STATUS_4E6A", update_interval: $interval_medium, target: "Manager" }}
   WAERMEPUMPEN_STATUS:        !include { file: wp_generic.yaml,     vars: { property: "WAERMEPUMPEN_STATUS", update_interval: $interval_medium, target: "Heizmodul" }}
   DRUCK_HOCHDRUCK:            !include { file: wp_generic.yaml, vars: { property: "DRUCK_HOCHDRUCK", display_name: "Druck Hochdruck", update_interval: $interval_medium, unit: "bar", icon: "mdi:gauge", accuracy_decimals: "2", scaler: "0.1", target: "Heizmodul" }}
   DRUCK_NIEDERDRUCK:          !include { file: wp_generic.yaml, vars: { property: "DRUCK_NIEDERDRUCK", display_name: "Druck Niederdruck", update_interval: $interval_medium, unit: "bar", icon: "mdi:gauge", accuracy_decimals: "2", scaler: "0.1", target: "Heizmodul" }}

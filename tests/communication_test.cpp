@@ -50,6 +50,14 @@ int main() {
     const std::vector<std::uint8_t> unavailableStatus{0xd2, 0x22, 0xfa, 0x4e, 0x5e, 0x80, 0x00};
     assert(processCanMessage(unavailableStatus, 0x480).second.get<float>() == 32768.0f);
 
+    const std::vector<std::uint8_t> operatingStatusBroadcast{0x20, 0x00, 0xfa, 0x4e, 0x6a, 0x00, 0x40};
+    const auto [operatingStatusProperty, operatingStatusValue] = processCanMessage(operatingStatusBroadcast, 0x480);
+    assert(operatingStatusProperty.id == Property::kSTATUS_4E6A.id);
+    assert(operatingStatusValue.get<float>() == 64.0f);
+
+    const std::vector<std::uint8_t> operatingStatusResponse{0xd2, 0x22, 0xfa, 0x4e, 0x6a, 0x00, 0x20};
+    assert(processCanMessage(operatingStatusResponse, 0x480).second.get<float>() == 32.0f);
+
     processNextTransmission();
     assert(test_canbus.sent_data.empty());
     queueTransmission(WPM, Property::kPROGRAMMSCHALTER, 0x1234);
@@ -84,4 +92,8 @@ int main() {
     assert(test_canbus.sent_data.back() == (std::vector<std::uint8_t>{
         static_cast<std::uint8_t>(Manager.getReadId() >> 8U), static_cast<std::uint8_t>(Manager.getReadId()),
         0xfa, 0x4e, 0x5e, 0x00, 0x00}));
+    requestData(Manager, Property::kSTATUS_4E6A);
+    assert(test_canbus.sent_data.back() == (std::vector<std::uint8_t>{
+        static_cast<std::uint8_t>(Manager.getReadId() >> 8U), static_cast<std::uint8_t>(Manager.getReadId()),
+        0xfa, 0x4e, 0x6a, 0x00, 0x00}));
 }
