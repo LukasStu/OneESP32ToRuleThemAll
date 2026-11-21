@@ -43,6 +43,11 @@ esphome:
           });
           queueRequest(Kessel, Property::kKUEHLEN);
 
+          CallbackHandler::instance().addCallback(std::make_pair(FET,Property::kHEIZPROG_1_MO_SO),[](const SimpleVariant& value){
+            id(HEIZPROG_1_MO_SO).publish_state(value.get<std::string>());
+          });
+          queueRequest(FET, Property::kHEIZPROG_1_MO_SO);
+
 substitutions:
   espclient_can_id: "0x6a2"
   manager_can_id: "0x480"
@@ -175,6 +180,16 @@ switch:
       - lambda: |-
           queueTransmission(Kessel, Property::kKUEHLEN, 0U);
 
+text_sensor:
+  - platform: template
+    name: "Heizprogramm 1 Mo-So"
+    id: HEIZPROG_1_MO_SO
+    icon: "mdi:calendar-clock"
+    update_interval: $interval_medium
+    lambda: |-
+      queueRequest(FET, Property::kHEIZPROG_1_MO_SO);
+      return {};
+
 #########################################
 #                                       #
 #   Packages                            #
@@ -203,6 +218,7 @@ packages:
   SOLLTEMP_FEK_VERMUTUNG:     !include { file: wp_temperature.yaml, vars: { property: "SOLLTEMP_FEK_VERMUTUNG", display_name: "Solltemperatur FEK", update_interval: $interval_medium, target: "Manager" }}
   RAUMFEUCHTE:                !include { file: wp_generic.yaml,     vars: { property: "RAUMFEUCHTE", display_name: "Raumfeuchte", update_interval: $interval_medium, unit: "%", icon: "mdi:water-percent", accuracy_decimals: "1", target: "FET"  }}
   TAUPUNKTTEMP_KESSEL_VERMUTUNG: !include { file: wp_temperature.yaml, vars: { property: "TAUPUNKTTEMP_KESSEL_VERMUTUNG", display_name: "Taupunkttemperatur (Vermutung)", update_interval: $interval_medium, target: "Kessel" }}
+  STEIGUNG_HK1:               !include { file: wp_generic.yaml, vars: { property: "STEIGUNG_HK1", display_name: "Steigung Heizkurve HK1", update_interval: $interval_medium, icon: "mdi:chart-line", accuracy_decimals: "2", target: "FET" }}
 
   ## Info->Anlage->Heizung
   # Außentemperatur

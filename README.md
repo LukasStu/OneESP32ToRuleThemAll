@@ -40,6 +40,7 @@ The temperature and generic sensor templates accept an optional `display_name` t
 
 For WPL13ACS Classic, `STATUS_4E6A` records the raw manager value on startup, at the medium update interval, and when manager messages are received. Its operating-mode meaning is not yet confirmed.
 The WPL13ACS Classic room-influence sensor requests the value from the FET on startup and at the medium update interval; it does not change the setting.
+The heating-curve slope and first Mo-Su heating-program time slot are also requested from the FET as read-only experimental sensors; their availability and encoding on this device are not yet confirmed.
 
 ## Troubleshooting
 ### You are not able to control your heat pump
