@@ -215,9 +215,9 @@ packages:
   ## Info->Anlage->Raumtemperatur
   RAUMISTTEMP:                !include { file: wp_temperature.yaml, vars: { property: "RAUMISTTEMP", display_name: "Isttemperatur FEK", update_interval: $interval_medium , target: "FET"  }}
   RAUMEINFLUSS:               !include { file: wp_generic.yaml, vars: { property: "RAUMEINFLUSS", display_name: "Raumeinfluss", update_interval: $interval_medium, icon: "mdi:home-thermometer", target: "FET" }}
-  SOLLTEMP_FEK_VERMUTUNG:     !include { file: wp_temperature.yaml, vars: { property: "SOLLTEMP_FEK_VERMUTUNG", display_name: "Solltemperatur FEK", update_interval: $interval_medium, target: "Manager" }}
+  SOLLTEMP_FEK:               !include { file: wp_temperature.yaml, vars: { property: "SOLLTEMP_FEK", display_name: "Solltemperatur FEK", update_interval: $interval_medium, target: "Manager" }}
   RAUMFEUCHTE:                !include { file: wp_generic.yaml,     vars: { property: "RAUMFEUCHTE", display_name: "Raumfeuchte", update_interval: $interval_medium, unit: "%", icon: "mdi:water-percent", accuracy_decimals: "1", target: "FET"  }}
-  TAUPUNKTTEMP_KESSEL_VERMUTUNG: !include { file: wp_temperature.yaml, vars: { property: "TAUPUNKTTEMP_KESSEL_VERMUTUNG", display_name: "Taupunkttemperatur (Vermutung)", update_interval: $interval_medium, target: "Kessel" }}
+  TAUPUNKTTEMP_KESSEL:        !include { file: wp_temperature.yaml, vars: { property: "TAUPUNKTTEMP_KESSEL", display_name: "Taupunkttemperatur", update_interval: $interval_medium, target: "Kessel" }}
   STEIGUNG_HK1:               !include { file: wp_generic.yaml, vars: { property: "STEIGUNG_HK1", display_name: "Steigung Heizkurve", update_interval: $interval_medium, icon: "mdi:chart-line", accuracy_decimals: "2", target: "FET" }}
 
   ## Info->Anlage->Heizung
@@ -240,8 +240,8 @@ packages:
   SOLLTEMP_HK1:               !include { file: wp_temperature.yaml, vars: { property: "SOLLTEMP_HK1", display_name: "Solltemperatur HK1", update_interval: $interval_fast, target: "Heizmodul" }}
   VORLAUFISTTEMP:             !include { file: wp_temperature.yaml, vars: { property: "VORLAUFISTTEMP"     , display_name: "Vorlaufisttemperatur WP", update_interval: $interval_fast, target: "MFG"  }}
   VORLAUFISTTEMP_NHZ:         !include { file: wp_temperature.yaml, vars: { property: "VORLAUFISTTEMP_NHZ"  , display_name: "Vorlaufisttemperatur NHZ", update_interval: $interval_fast, target: "MFG"  }}
-  RUECKLAUFTEMP_WP_VERMUTUNG: !include { file: wp_temperature.yaml, vars: { property: "RUECKLAUFTEMP_WP_VERMUTUNG", display_name: "Rücklauftemperatur WP", update_interval: $interval_fast, target: "Kessel" }}
-  VORLAUFTEMP_VERMUTUNG:      !include { file: wp_temperature.yaml, vars: { property: "VORLAUFTEMP_VERMUTUNG", display_name: "Vorlaufisttemperatur", update_interval: $interval_fast, target: "Kessel" }}
+  RUECKLAUFTEMP_WP:           !include { file: wp_temperature.yaml, vars: { property: "RUECKLAUFTEMP_WP", display_name: "Rücklauftemperatur WP", update_interval: $interval_fast, target: "Kessel" }}
+  VORLAUFTEMP_06A2:           !include { file: wp_temperature.yaml, vars: { property: "VORLAUFTEMP_06A2", display_name: "Vorlaufisttemperatur", update_interval: $interval_fast, target: "Kessel" }}
   RUECKLAUFISTTEMP:           !include { file: wp_temperature.yaml, vars: { property: "RUECKLAUFISTTEMP"   , display_name: "Rücklaufisttemperatur", update_interval: $interval_fast , target: "Kessel" }}
   PUFFERISTTEMPERATUR:        !include { file: wp_temperature.yaml, vars: { property: "PUFFERISTTEMPERATUR", display_name: "Puffertemperatur" }}
   PUFFERSOLLTEMP:             !include { file: wp_temperature.yaml, vars: { property: "PUFFERSOLLTEMP", display_name: "Puffersolltemperatur" }}
@@ -254,18 +254,16 @@ packages:
   
   BIVALENZTEMPERATUR_HZG_KESSEL: !include { file: wp_temperature.yaml, vars: { property: "BIVALENZTEMPERATUR_HZG", name_suffix: "_KESSEL", display_name: "Bivalenztemperatur HZG", target: "Kessel" }}
   BIVALENZTEMPERATUR_WW_KESSEL:  !include { file: wp_temperature.yaml, vars: { property: "BIVALENZTEMPERATUR_WW", name_suffix: "_KESSEL", display_name: "Bivalenztemperatur WW", target: "Kessel" }}
-  EINSATZGRENZE_HZG_VERMUTUNG: !include { file: wp_temperature.yaml, vars: { property: "EINSATZGRENZE_HZG_VERMUTUNG", display_name: "Einsatzgrenze HZG (Vermutung)", target: "Kessel" }}
-  EINSATZGRENZE_WW_VERMUTUNG: !include { file: wp_temperature.yaml, vars: { property: "EINSATZGRENZE_WW_VERMUTUNG", display_name: "Einsatzgrenze WW (Vermutung)", target: "Kessel" }}
+  EINSATZGRENZE_HZG:          !include { file: wp_temperature.yaml, vars: { property: "EINSATZGRENZE_HZG", display_name: "Einsatzgrenze HZG", target: "Kessel" }}
+  EINSATZGRENZE_WW:           !include { file: wp_temperature.yaml, vars: { property: "EINSATZGRENZE_WW", display_name: "Einsatzgrenze WW", target: "Kessel" }}
    
-  BETRIEBS_STATUS:            !include { file: wp_generic.yaml,     vars: { property: "BETRIEBS_STATUS", update_interval: $interval_medium, target: "Manager" }}
   STATUS_4E5E:                !include { file: wp_generic.yaml,     vars: { property: "STATUS_4E5E", update_interval: $interval_medium, target: "Manager" }}
   STATUS_4E6A:                !include { file: wp_generic.yaml,     vars: { property: "STATUS_4E6A", update_interval: $interval_medium, target: "Manager" }}
-  WAERMEPUMPEN_STATUS:        !include { file: wp_generic.yaml,     vars: { property: "WAERMEPUMPEN_STATUS", update_interval: $interval_medium, target: "Heizmodul" }}
   DRUCK_HOCHDRUCK:            !include { file: wp_generic.yaml, vars: { property: "DRUCK_HOCHDRUCK", display_name: "Druck Hochdruck", update_interval: $interval_medium, unit: "bar", icon: "mdi:gauge", accuracy_decimals: "2", scaler: "0.1", target: "Heizmodul" }}
   DRUCK_NIEDERDRUCK:          !include { file: wp_generic.yaml, vars: { property: "DRUCK_NIEDERDRUCK", display_name: "Druck Niederdruck", update_interval: $interval_medium, unit: "bar", icon: "mdi:gauge", accuracy_decimals: "2", scaler: "0.1", target: "Heizmodul" }}
-  ISTDREHZAHL_VERDICHTER_VERMUTUNG: !include { file: wp_generic.yaml, vars: { property: "ISTDREHZAHL_VERDICHTER_VERMUTUNG", display_name: "Istdrehzahl Verdichter (Vermutung)", update_interval: $interval_medium, unit: "Hz", icon: "mdi:counter", target: "Heizmodul" }}
-  LUEFTERDREHZAHL_C281_VERMUTUNG: !include { file: wp_generic.yaml, vars: { property: "LUEFTERDREHZAHL_C281_VERMUTUNG", display_name: "Lüfterdrehzahl 0xC281 (Vermutung)", update_interval: $interval_medium, unit: "Hz", icon: "mdi:fan", target: "Heizmodul" }}
-  LUEFTERDREHZAHL_C283_VERMUTUNG: !include { file: wp_generic.yaml, vars: { property: "LUEFTERDREHZAHL_C283_VERMUTUNG", display_name: "Lüfterdrehzahl 0xC283 (Vermutung)", update_interval: $interval_medium, unit: "Hz", icon: "mdi:fan", target: "Heizmodul" }}
+  ISTDREHZAHL_VERDICHTER_063D: !include { file: wp_generic.yaml, vars: { property: "ISTDREHZAHL_VERDICHTER_063D", display_name: "Istdrehzahl Verdichter", update_interval: $interval_medium, unit: "Hz", icon: "mdi:counter", target: "Heizmodul" }}
+  LUEFTERDREHZAHL_C281:      !include { file: wp_generic.yaml, vars: { property: "LUEFTERDREHZAHL_C281", display_name: "Lüfterdrehzahl 0xC281", update_interval: $interval_medium, unit: "Hz", icon: "mdi:fan", target: "Heizmodul" }}
+  LUEFTERDREHZAHL_C283:      !include { file: wp_generic.yaml, vars: { property: "LUEFTERDREHZAHL_C283", display_name: "Lüfterdrehzahl 0xC283", update_interval: $interval_medium, unit: "Hz", icon: "mdi:fan", target: "Heizmodul" }}
   STROM_INVERTER:             !include { file: wp_generic.yaml,     vars: { property: "STROM_INVERTER"        , update_interval: $interval_medium, unit: "A"    , target: "Heizmodul"        , accuracy_decimals: "1"  }}
   SPANNUNG_INVERTER:          !include { file: wp_generic.yaml,     vars: { property: "SPANNUNG_INVERTER"     , update_interval: $interval_medium, unit: "V"    , target: "Heizmodul"        , accuracy_decimals: "1"  }}
 

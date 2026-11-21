@@ -99,11 +99,11 @@ struct Property : public detail::Property {
     PROPERTY(PUFFERSOLLTEMP, 0x01D5, Type::et_dec_val);
     PROPERTY(VORLAUFTEMP, 0x01d6, Type::et_dec_val);
     PROPERTY(MAXVORLAUFTEMP, 0x01e8, Type::et_dec_val);
-    PROPERTY(TAUPUNKTTEMP_KESSEL_VERMUTUNG, 0x0264, Type::et_dec_val);
+    PROPERTY(TAUPUNKTTEMP_KESSEL, 0x0264, Type::et_dec_val);
     PROPERTY(HEISSGASTEMP, 0x0265, Type::et_dec_val);
     PROPERTY(EL_NACHERW_ANZ_STUFEN, 0x059f);
     PROPERTY(EL_NACHERW_VERZ_ZEIT, 0x05a0);
-    PROPERTY(ISTDREHZAHL_VERDICHTER_VERMUTUNG, 0x063d);
+    PROPERTY(ISTDREHZAHL_VERDICHTER_063D, 0x063d);
     PROPERTY(SAUGGASTEMP_VERDICHTER, 0x063f, Type::et_dec_val);
     PROPERTY(VERDICHTER_EINTRITTSTEMP, 0x06d9, Type::et_dec_val);
     PROPERTY(ISTDREHZAHL_VERDICHTER, 0x06eb);
@@ -126,7 +126,7 @@ struct Property : public detail::Property {
     PROPERTY(RAUMSOLLTEMP, 0x0006, Type::et_dec_val);
     PROPERTY(RAUMFEUCHTE, 0x0075, Type::et_dec_val);
     PROPERTY(TAUPUNKTTEMP, 0x4ee0, Type::et_dec_val);
-    PROPERTY(SOLLTEMP_FEK_VERMUTUNG, 0x4e66, Type::et_dec_val);
+    PROPERTY(SOLLTEMP_FEK, 0x4e66, Type::et_dec_val);
     PROPERTY(RAUMEINFLUSS, 0x010f, Type::et_little_endian);
     PROPERTY(HEIZUNGSDRUCK, 0x4f46, Type::et_cent_val);
     PROPERTY(VOLUMENSTROM, 0x4f47, Type::et_dec_val);
@@ -152,19 +152,19 @@ struct Property : public detail::Property {
     PROPERTY(HYSTERESE_VORLAUFTEMP_KUEHLEN, 0x4f00, Type::et_dec_val);
     PROPERTY(PROGRAMMSCHALTER, 0x0112, Type::et_betriebsart);
     PROPERTY(VORLAUFISTTEMP_NHZ, 0xfdf5, Type::et_dec_val);
-    PROPERTY(RUECKLAUFTEMP_WP_VERMUTUNG, 0x06ac, Type::et_dec_val);
-    PROPERTY(VORLAUFTEMP_VERMUTUNG, 0x06a2, Type::et_dec_val);
+    PROPERTY(RUECKLAUFTEMP_WP, 0x06ac, Type::et_dec_val);
+    PROPERTY(VORLAUFTEMP_06A2, 0x06a2, Type::et_dec_val);
     PROPERTY(LEISTUNG_KUEHLEN, 0x7a40, Type::et_dec_val);
     PROPERTY(RUECKLAUFISTTEMP, 0x02CA, Type::et_dec_val);
-    PROPERTY(LUEFTERDREHZAHL_C281_VERMUTUNG, 0xc281);
-    PROPERTY(LUEFTERDREHZAHL_C283_VERMUTUNG, 0xc283);
-    PROPERTY(VERDAMPFEREINGANGSTEMP_VERMUTUNG, 0xc2bf, Type::et_dec_val);
+    PROPERTY(LUEFTERDREHZAHL_C281, 0xc281);
+    PROPERTY(LUEFTERDREHZAHL_C283, 0xc283);
+    PROPERTY(VERDAMPFEREINGANGSTEMP, 0xc2bf, Type::et_dec_val);
 
     PROPERTY(HEIZPROG_1_MO_SO, 0x14a0, Type::et_time_domain);
     PROPERTY(BIVALENZTEMPERATUR_HZG, 0x01ac, Type::et_dec_val);
     PROPERTY(BIVALENZTEMPERATUR_WW, 0x01ad, Type::et_dec_val);
-    PROPERTY(EINSATZGRENZE_HZG_VERMUTUNG, 0x01ae, Type::et_dec_val);
-    PROPERTY(EINSATZGRENZE_WW_VERMUTUNG, 0x01af, Type::et_dec_val);
+    PROPERTY(EINSATZGRENZE_HZG, 0x01ae, Type::et_dec_val);
+    PROPERTY(EINSATZGRENZE_WW, 0x01af, Type::et_dec_val);
 
     PROPERTY(VD_HEIZBETRIEB, 0x07fc, Type::et_default);
     PROPERTY(VD_KUEHLEN, 0x07ff, Type::et_default);

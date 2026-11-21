@@ -26,11 +26,11 @@ int main() {
     assert(GetValueByType(55, Property::kSTEIGUNG_HK1.type).get<float>() == 0.55f);
     assert(GetValueByType(0x1654, Property::kHEIZPROG_1_MO_SO.type).get<std::string>() == "05:30-21:00");
     assert(GetValueByType(0x8000, Property::kHEIZPROG_1_MO_SO.type).get<std::string>() == "xx:xx-xx:xx?");
-    assert(GetValueByType(491, Property::kRUECKLAUFTEMP_WP_VERMUTUNG.type).get<float>() == 49.1f);
-    assert(GetValueByType(520, Property::kVORLAUFTEMP_VERMUTUNG.type).get<float>() == 52.0f);
-    assert(GetValueByType(65336, Property::kEINSATZGRENZE_HZG_VERMUTUNG.type).get<float>() == -20.0f);
+    assert(GetValueByType(491, Property::kRUECKLAUFTEMP_WP.type).get<float>() == 49.1f);
+    assert(GetValueByType(520, Property::kVORLAUFTEMP_06A2.type).get<float>() == 52.0f);
+    assert(GetValueByType(65336, Property::kEINSATZGRENZE_HZG.type).get<float>() == -20.0f);
     assert(GetValueByType(466, Property::kSAUGGASTEMP_VERDICHTER.type).get<float>() == 46.6f);
-    assert(GetValueByType(378, Property::kVERDAMPFEREINGANGSTEMP_VERMUTUNG.type).get<float>() == 37.8f);
+    assert(GetValueByType(378, Property::kVERDAMPFEREINGANGSTEMP.type).get<float>() == 37.8f);
     assert(GetValueByType(0x0100, Property::kSOMMERBETRIEB.type).get<bool>());
     assert(!GetValueByType(0x0000, Property::kSOMMERBETRIEB.type).get<bool>());
     assert(GetValueByType(0x0001, Property::kKUEHLEN.type).get<bool>());
