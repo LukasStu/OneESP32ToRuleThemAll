@@ -38,7 +38,7 @@ Numeric settings are encoded according to their property type; the UI step does 
 
 The temperature and generic sensor templates accept an optional `display_name` to set the entity name independently of the property and internal ID.
 
-For WPL13ACS Classic, `STATUS_4E6A` records the raw manager value on startup, at the medium update interval, and when manager messages are received. Its operating-mode meaning is not yet confirmed.
+For WPL13ACS Classic, `STATUS_4E6A`, `STATUS_4E7E`, and `STATUS_0692` record raw manager values on startup, at the medium update interval, and when manager messages are received. Their operating-mode meanings are not yet confirmed.
 The WPL13ACS Classic room-influence sensor requests the value from the FET on startup and at the medium update interval; it does not change the setting.
 The heating-curve slope and first Mo-Su heating-program time slot are also requested from the FET as read-only experimental sensors; their availability and encoding on this device are not yet confirmed.
 

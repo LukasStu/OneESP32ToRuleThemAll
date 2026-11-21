@@ -116,6 +116,8 @@ struct Property : public detail::Property {
     PROPERTY(WAERMEPUMPEN_STATUS, 0x02e2);
     PROPERTY(STATUS_4E5E, 0x4e5e);
     PROPERTY(STATUS_4E6A, 0x4e6a);
+    PROPERTY(STATUS_4E7E, 0x4e7e);
+    PROPERTY(STATUS_0692, 0x0692);
     PROPERTY(MINTEMP, 0x4ea4, Type::et_dec_val);
     PROPERTY(MAXTEMP, 0x4ea8, Type::et_dec_val);
     PROPERTY(MISCHERDYNAMIK, 0x4ea9);
