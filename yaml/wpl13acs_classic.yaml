@@ -218,7 +218,7 @@ packages:
   SOLLTEMP_FEK_VERMUTUNG:     !include { file: wp_temperature.yaml, vars: { property: "SOLLTEMP_FEK_VERMUTUNG", display_name: "Solltemperatur FEK", update_interval: $interval_medium, target: "Manager" }}
   RAUMFEUCHTE:                !include { file: wp_generic.yaml,     vars: { property: "RAUMFEUCHTE", display_name: "Raumfeuchte", update_interval: $interval_medium, unit: "%", icon: "mdi:water-percent", accuracy_decimals: "1", target: "FET"  }}
   TAUPUNKTTEMP_KESSEL_VERMUTUNG: !include { file: wp_temperature.yaml, vars: { property: "TAUPUNKTTEMP_KESSEL_VERMUTUNG", display_name: "Taupunkttemperatur (Vermutung)", update_interval: $interval_medium, target: "Kessel" }}
-  STEIGUNG_HK1:               !include { file: wp_generic.yaml, vars: { property: "STEIGUNG_HK1", display_name: "Steigung Heizkurve HK1", update_interval: $interval_medium, icon: "mdi:chart-line", accuracy_decimals: "2", target: "FET" }}
+  STEIGUNG_HK1:               !include { file: wp_generic.yaml, vars: { property: "STEIGUNG_HK1", display_name: "Steigung Heizkurve", update_interval: $interval_medium, icon: "mdi:chart-line", accuracy_decimals: "2", target: "FET" }}
 
   ## Info->Anlage->Heizung
   # Außentemperatur
