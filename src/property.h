@@ -127,7 +127,7 @@ struct Property : public detail::Property {
     PROPERTY(RAUMFEUCHTE, 0x0075, Type::et_dec_val);
     PROPERTY(TAUPUNKTTEMP, 0x4ee0, Type::et_dec_val);
     PROPERTY(SOLLTEMP_FEK_VERMUTUNG, 0x4e66, Type::et_dec_val);
-    PROPERTY(RAUMEINFLUSS, 0x4f33);
+    PROPERTY(RAUMEINFLUSS, 0x010f, Type::et_little_endian);
     PROPERTY(HEIZUNGSDRUCK, 0x4f46, Type::et_cent_val);
     PROPERTY(VOLUMENSTROM, 0x4f47, Type::et_dec_val);
     PROPERTY(HEIZUNGSDRUCK_WPL, 0x0674, Type::et_cent_val);

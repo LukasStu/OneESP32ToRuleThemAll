@@ -28,6 +28,13 @@ int main() {
     assert(property.id == Property::kRAUMISTTEMP.id);
     assert(value.get<float>() == 23.0f);
 
+    const std::vector<std::uint8_t> roomInfluence{0xc0, 0x01, 0xfa, 0x01, 0x0f, 0x04, 0x00};
+    const auto [roomInfluenceProperty, roomInfluenceValue] = processCanMessage(roomInfluence, 0x301);
+    assert(roomInfluenceProperty.id == Property::kRAUMEINFLUSS.id);
+    assert(roomInfluenceValue.get<float>() == 4.0f);
+    const std::vector<std::uint8_t> roomInfluenceTwenty{0xc0, 0x01, 0xfa, 0x01, 0x0f, 0x14, 0x00};
+    assert(processCanMessage(roomInfluenceTwenty, 0x301).second.get<float>() == 20.0f);
+
     const std::vector<std::uint8_t> zero{0xc0, 0x01, 0x11, 0x00, 0x00, 0x00, 0x00};
     const auto [zeroProperty, zeroValue] = processCanMessage(zero, 0x301);
     assert(zeroProperty.id == Property::kRAUMISTTEMP.id);
