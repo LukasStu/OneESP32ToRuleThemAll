@@ -43,10 +43,10 @@ esphome:
           });
           queueRequest(Kessel, Property::kKUEHLEN);
 
-          CallbackHandler::instance().addCallback(std::make_pair(Manager,Property::kHEIZPROG_1_MO_SO),[](const SimpleVariant& value){
+          CallbackHandler::instance().addCallback(std::make_pair(Kessel,Property::kHEIZPROG_1_MO_SO),[](const SimpleVariant& value){
             id(HEIZPROG_1_MO_SO).publish_state(value.get<std::string>());
           });
-          queueRequest(Manager, Property::kHEIZPROG_1_MO_SO);
+          queueRequest(Kessel, Property::kHEIZPROG_1_MO_SO);
 
 substitutions:
   espclient_can_id: "0x6a2"
@@ -187,7 +187,7 @@ text_sensor:
     icon: "mdi:calendar-clock"
     update_interval: $interval_medium
     lambda: |-
-      queueRequest(Manager, Property::kHEIZPROG_1_MO_SO);
+      queueRequest(Kessel, Property::kHEIZPROG_1_MO_SO);
       return {};
 
 #########################################
