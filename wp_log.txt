@@ -1,0 +1,10 @@
+nohup: ignoring input
+INFO ESPHome 2026.9.0
+INFO Reading configuration yaml/esphome-web-42e010.yaml...
+Failed config
+
+packages: [source yaml/esphome-web-42e010.yaml:83]
+  
+  Error including file 'OneESP32ToRuleThemAll/yaml/wpl13acs_classic.yaml': Error reading file yaml/OneESP32ToRuleThemAll/yaml/wpl13acs_classic.yaml: [Errno 2] No such file or directory: 'yaml/OneESP32ToRuleThemAll/yaml/wpl13acs_classic.yaml'
+  In: packages->wpl13acs_classic in yaml/esphome-web-42e010.yaml 83:2.
+  wpl13acs_classic: IncludeFile(OneESP32ToRuleThemAll/yaml/wpl13acs_classic.yaml)
