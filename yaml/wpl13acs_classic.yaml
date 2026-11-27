@@ -48,6 +48,13 @@ esphome:
           });
           queueRequest(Kessel, Property::kHEIZPROG_1_MO_SO);
 
+          CallbackHandler::instance().addCallback(std::make_pair(Manager,Property::kSTATUS_4E6A),[](const SimpleVariant& value){
+            const auto status{static_cast<std::uint16_t>(value)};
+            id(STATUS_4E6A_HEIZEN).publish_state((status & 0x0020U) != 0U);
+            id(STATUS_4E6A_WARMWASSER).publish_state((status & 0x0040U) != 0U);
+            id(STATUS_4E6A_ABTAUEN).publish_state((status & 0x0008U) != 0U);
+          });
+
 substitutions:
   espclient_can_id: "0x6a2"
   manager_can_id: "0x480"
@@ -179,6 +186,17 @@ switch:
     turn_off_action:
       - lambda: |-
           queueTransmission(Kessel, Property::kKUEHLEN, 0U);
+
+binary_sensor:
+  - platform: template
+    name: "Heizbetrieb"
+    id: STATUS_4E6A_HEIZEN
+  - platform: template
+    name: "Warmwasserbereitung"
+    id: STATUS_4E6A_WARMWASSER
+  - platform: template
+    name: "Abtauvorgang"
+    id: STATUS_4E6A_ABTAUEN
 
 text_sensor:
   - platform: template
