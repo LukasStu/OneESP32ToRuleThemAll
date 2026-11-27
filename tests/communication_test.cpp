@@ -62,6 +62,16 @@ int main() {
     assert(operatingStatusProperty.id == Property::kSTATUS_4E6A.id);
     assert(operatingStatusValue.get<float>() == 64.0f);
 
+    const std::vector<std::uint8_t> observedShortId{0xc2, 0x01, 0x0a, 0x1b, 0x0b, 0x00, 0x00};
+    const auto [shortProperty, shortValue] = processCanMessage(observedShortId, 0x180);
+    assert(shortProperty.name == "UNKNOWN_000A");
+    assert(shortValue.get<float>() == 6923.0f);
+
+    const std::vector<std::uint8_t> observedExtendedId{0xd2, 0x22, 0xfa, 0x09, 0x17, 0xfc, 0x18};
+    const auto [extendedProperty, extendedValue] = processCanMessage(observedExtendedId, 0x480);
+    assert(extendedProperty.name == "UNKNOWN_0917");
+    assert(extendedValue.get<float>() == 64536.0f);
+
     const std::vector<std::uint8_t> operatingStatusResponse{0xd2, 0x22, 0xfa, 0x4e, 0x6a, 0x00, 0x20};
     assert(processCanMessage(operatingStatusResponse, 0x480).second.get<float>() == 32.0f);
 

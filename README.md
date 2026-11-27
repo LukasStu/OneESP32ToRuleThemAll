@@ -41,6 +41,7 @@ The temperature and generic sensor templates accept an optional `display_name` t
 For WPL13ACS Classic, `STATUS_4E6A`, `STATUS_4E7E`, and `STATUS_0692` record raw manager values on startup, at the medium update interval, and when manager messages are received. Their operating-mode meanings are not yet confirmed.
 The WPL13ACS Classic room-influence sensor requests the value from the FET on startup and at the medium update interval; it does not change the setting.
 The heating-curve slope is requested from the FET as a read-only experimental sensor. The first Mo-Su heating-program time slot is requested from the Kessel for testing; its availability and encoding on this device are not yet confirmed.
+Identifiers observed in the WPL13 CAN log without a verified meaning are listed as `UNKNOWN_<hex ID>` in `property.h`. Their values remain unsigned raw values; an identifier alone does not establish a sensor, unit, or writable setting. Existing named properties and their types are retained when used by the configurations or code, even if they did not occur in that log.
 
 ## Troubleshooting
 ### You are not able to control your heat pump
